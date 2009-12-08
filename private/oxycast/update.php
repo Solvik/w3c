@@ -56,14 +56,8 @@ function Explore($dir)
 			  getid3_lib::CopyTagsToComments($ThisFileInfo);
 			  if ($ThisFileInfo["tags_html"]["id3v1"]["title"][0] != "" && $ThisFileInfo["tags_html"]["id3v1"]["artist"][0] != "") 
 			    {
-			      preg_match_all('(licenses\/(.*?)\/)', $ThisFileInfo["tags_html"]["id3v2"]["copyright"][0], $matches, PREG_SET_ORDER);
-			      $sql = 'UPDATE musique SET album = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["album"][0]).'",
-licence = "cc-'.$matches[0][1].'", titre = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["title"][0]).'",
-artiste = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["artist"][0]).'", 
-lien_chanson = "'.$ThisFileInfo["tags_html"]["id3v2"]["url_file"][0].'", 
-lien_album = "'.$ThisFileInfo["tags_html"]["id3v2"]["url_source"][0].'" 
-WHERE path = "'.$dir.'" AND filename = "'.$file.'" LIMIT 1';
-								
+			      $sql = 'UPDATE musique SET titre = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["title"][0]).'", artiste = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["artist"][0]).'" WHERE path = "'.$dir.'" AND filename = "'.$file.'" LIMIT 1';
+			      echo $sql."\n\n\n\n";
 			      mysql_query($sql);
 			    }
 			} 
@@ -80,7 +74,7 @@ WHERE path = "'.$dir.'" AND filename = "'.$file.'" LIMIT 1';
 }
 
 
-Explore("/home/oxycast/".PATH."public/playlist");
+Explore(PATH."public/playlist");
 
 
 $suppr = array_diff($in, $out);
@@ -91,6 +85,7 @@ foreach ($suppr as $key => $value)
   $filename = $p[count($p) - 1];
   $path = str_replace("/".$filename, "", $value);
   mysql_query('UPDATE musique SET path = "", filename = "" WHERE filename = "'.$filename.'" AND path = "'.$path.'" ');
+  mysql_query('DELETE FROM musique WHERE filename = "" AND path = ""');
   echo $filename." supprimé\n";
 }
 ?>
