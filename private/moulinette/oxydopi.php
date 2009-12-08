@@ -1,5 +1,5 @@
 <?php
-
+# ligne de commentaire a supprimer (test de commit)
 $host = "localhost";
 $user = "oxycast";
 $base = "oxycast";
