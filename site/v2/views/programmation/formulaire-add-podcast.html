@@ -1,0 +1,46 @@
+<div class="boxtitle">Ma Programmation</div>
+<div class="content_content">
+<p><br />
+Veuillez remplir les champs suivants :</p>
+<form action="" method="post">
+<input type="hidden" name="type" value="podcast" />
+<input type="hidden" name="hdebut" value="<?php echo $hdebut; ?>" />
+<input type="hidden" name="mdebut" value="<?php echo $mdebut; ?>" />
+<input type="hidden" name="hfin" value="<?php echo $hfin; ?>" />
+<input type="hidden" name="mfin" value="<?php echo $mfin; ?>" />
+<table>
+	<tr>
+		<td>Type :</td>
+		<td>Podcast</td>
+	</tr>
+	<tr>
+		<td>Jour :</td>
+		<td><?php echo getJour($jour); ?></td>
+	</tr>
+	<tr>
+		<td>Heure de d&eacute;but :</td>
+		<td><?php echo time_format($hdebut, $mdebut); ?></td>
+	</tr>
+	<tr>
+		<td>Heure de fin :</td>
+		<td><?php echo time_format($hfin, $mfin); ?></td>
+	</tr>
+	<tr>
+		<td>Podcast :</td>
+		<td>
+			<select name="action">
+				<?php 
+$podcasts = getPodcasts($compte);
+foreach ($podcasts as $podcast)
+{
+	echo '<option value="'.$podcast['id'].'">'.$podcast['titre'].'</option>';
+} 
+?>			</select>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" name="etape2" value="Ajouter" /></td>
+	</tr>
+</table>
+</div>

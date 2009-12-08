@@ -1,0 +1,11 @@
+<div class="boxtitle">Cr&eacute;ation d'un minisite</div>
+<div class="content_content">
+<p>Vous n'avez pas encore de mini-site pour votre stream! Pour en cr&eacute;er un choisissez un nom et cliquez sur Cr&eacute;er:</p>
+<?php if(!empty($erreur)) echo '  <p style="color: red;">'.$erreur.'</p>' ?>
+
+	<form action="" method="post">
+		<label for="nom">Nom du mini-site:</label>
+		<input type="text" name="nom"/>
+  		<input type="submit" value="Creer" name="blog" />
+	</form>
+</div>

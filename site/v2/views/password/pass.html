@@ -1,0 +1,18 @@
+<div class="boxtitle">Mot de passe perdu</div>
+<div class="content_content">
+  <p>Veuillez remplir le formulaire pour r&eacute;cup&eacute;rer votre mot de passe.</p>
+<?php if(!empty($erreur)) echo '<p style="color:red;">'.$erreur.'</p>'; ?>
+
+<div align="center">
+<br />
+<form method="post" name="mdp" action="">
+<label class="aligne">&nbsp;Login : </label>
+<input type="text" name="login" size="16" value="" /><br /><br />
+<label for="captcha">Recopiez le mot : <img src="libs/captcha.php" alt="Captcha" /></label>
+<input type="text" name="captcha" id="captcha" /><br />
+
+<input class="submit" type="submit" name="password" /> 
+</form>
+</div>
+
+</div>

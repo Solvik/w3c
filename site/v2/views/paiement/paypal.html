@@ -1,0 +1,28 @@
+<div class="boxtitle">Paiement de votre commande</div>
+<div class="content_content">
+<p>Vous avez choisi de r&eacute;gler votre commande par <strong>Paypal</strong>.<br />
+Pour cela, cliquez sur le bouton suivant :<br />
+<?php
+if(PAYPAL_TEST_MODE) echo '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">';
+else echo '<form action="https://www.paypal.com/cgi-bin/webscr" method="post">'; ?>
+<input type='hidden' value="<?php echo Offre::getPrice($commande->offerId); ?>" name="amount" />
+<input name="currency_code" type="hidden" value="EUR" />
+<input name="shipping" type="hidden" value="0.00" />
+<input name="tax" type="hidden" value="0.00" />
+<input name="return" type="hidden" value="http://www.oxycast.net/paiement-valide" />
+<input name="cancel_return" type="hidden" value="http://www.oxycast.net/paiement-annule" />
+<input name="notify_url" type="hidden" value="http://www.oxycast.net/paypal/ipn.php" />
+<input name="cmd" type="hidden" value="_xclick" />
+<input name="business" type="hidden" value="<?php echo PAYPAL_RECEIVER_EMAIL; ?>" />
+<input name="item_name" type="hidden" value="OxyCast - Offre <?php echo $commande->offerId; ?>" />
+<input name="no_note" type="hidden" value="1" />
+<input name="lc" type="hidden" value="FR" />
+<input name="bn" type="hidden" value="PP-BuyNowBF" />
+<input name="custom" type="hidden" value="<?php echo $commande->transacId; ?>" />
+<input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et s&eacute;curis&eacute;e" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
+</form>
+
+<br />
+En cas de probl&egrave;me, merci de contacter un administrateur en pr&eacute;cisant votre num&eacute;ro de commande : <strong><?php echo $commande->transacId; ?></strong></p>
+
+</div>

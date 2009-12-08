@@ -1,0 +1,14 @@
+<div class="boxtitle">Connexion</div>
+   <div class="content_content">
+		<form id="login" method="post" action="login">
+					<p><?php echo $erreur; ?></p>
+					<label class="label" for="login">Utilisateur:</label>
+					<input type="text" id="login" name="login" value="" /><br />
+					<label class="label" for="pass">Mot de passe:</label>
+					<input type="password" id="pass" name="pass" value="" /><br />
+					<label for="captcha">Recopiez le mot : <img src="libs/captcha.php" alt="Captcha" /></label>
+					<input type="text" name="captcha" id="captcha" /><br />
+					<input type="submit" name="connexion" value="Go" />
+					<p><a href="inscription">Inscription</a>      <a href="password">Mot de passe oubli&eacute; ?</a></p>
+		</form>
+	</div>

@@ -1,0 +1,51 @@
+<div class="boxtitle">Modification de vos informations</div>
+<div class="content_content">
+<?php if(!empty($erreur)) echo '<p style="color:red;">'.$erreur.'</p>'; ?>
+<form action="" method="post">
+<table width="718" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td width="127" align="right">Pseudo</td>
+    <td width="576"><?php echo $compte->login; ?></td>
+    </tr>
+  <tr>
+    <td align="right">Adresse mail *</td>
+    <td colspan="2"><input type="text" name="mail" value="<?php echo $compte->mail; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Mot de passe *</td>
+    <td colspan="2"><input type="password" name="mdp"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Confirmation *</td>
+    <td colspan="2"><input type="password" name="mdp_conf"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Nom</td>
+    <td colspan="2"><input type="text" name="nom" value="<?php echo $compte->nom; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Pr&eacute;nom</td>
+    <td colspan="2"><input type="text" name="prenom" value="<?php echo $compte->prenom; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Adresse</td>
+    <td colspan="2"><input type="text" name="adresse" value="<?php echo $compte->adresse; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Code Postal</td>
+    <td colspan="2"><input type="text" name="cp" value="<?php echo $compte->cp; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Ville</td>
+    <td colspan="2"><input type="text" name="ville" value="<?php echo $compte->ville; ?>" /></td>
+  </tr>
+<br />
+<br />
+  <tr>
+    <td>&nbsp;</td>
+    <td align="center"><input class="submit" type="submit" name="modifier" /></td>
+  </tr>
+</table>
+</form>
+
+</div>

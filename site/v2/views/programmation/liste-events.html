@@ -1,0 +1,29 @@
+<div class="boxtitle">Ma Programmation</div>
+<div class="content_content">
+<p><br />
+Jour : <strong><?php echo getJour($jour); ?></strong></p>
+<table class="table event_list">
+	<tr>
+	   <th style="width: 20%">Heure d&eacute;but</th>
+	   <th style="width: 20%">Heure fin</th>
+	   <th style="width: 20%">Type</th>
+	   <th style="width: 20%">Nom</th>
+	   <th style="width: 20%">Supprimer ou Modifier</th>
+	</tr>
+<?php foreach($events as $event): ?>
+	<tr>
+		<td><?php echo time_format($event->heure_debut, $event->minute_debut); ?></td>
+		<td><?php echo time_format($event->heure_fin, 	$event->minute_fin); ?></td>
+		<td><?php echo $event->type; ?></td>
+		<td><?php if($event->type == 'playlist') echo PlayList::getPlaylistName($event->action, $compte);
+				  else echo getPodcastName($event->action, $compte); ?></td>
+		<td>
+		<a href="programmation-del-<?php echo $event->id; ?>" style="text-decoration:none;"><img src="images/del.png" alt=""> Supprimer</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="programmation-edit-<?php echo $event->id; ?>" style="text-decoration:none;"><img src="images/edit.png" alt=""> Modifier</a></td>
+	</tr>
+<?php endforeach; ?>
+</table>
+<ul><li class="add_list" style="text-align: right;margin-right: 50px;"><a href="programmation-add-<?php echo $jour; ?>" style="text-decoration:none;">Ajouter un &eacute;venement</a></li></ul>
+<p><a href="programmation">Retour</a></p>
+</div>

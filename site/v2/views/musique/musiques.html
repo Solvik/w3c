@@ -1,0 +1,21 @@
+<div class="boxtitle">Ma musique</div>
+<div class="content_content">
+<p>Mettre a jour sa musique en cliquant <a href="musique-update">ici</a>.</p>
+<?php if(!empty($info)) echo '<p style="color: green;">'.$info.'</p>' ?>
+<p></p>
+<table class="table music_list">
+<tr>
+	<th>Artiste</th>
+	<th>Titre</th>
+	<th>R&eacute;pertoire</th>
+</tr>
+<?php foreach($musiques as $musique): ?>
+	<tr>
+		<td><?php echo $musique['artiste']; ?></td>
+		<td><?php echo $musique['titre']; ?></td>
+		<td><?php 
+		$toDelete = "/home/oxycast/";
+		echo str_replace($toDelete, "", $musique['chemin']); ?></td>
+	</tr>
+<?php endforeach; ?>
+</table></div>

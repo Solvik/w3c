@@ -1,0 +1,9 @@
+<div class="boxtitle">Commande en cours</div>
+<div class="content_content">
+	<p>Votre commande a &eacute;t&eacute; valid&eacute;e.<br />
+	Vous devez maintenant proc&eacute;der au paiement :</p>
+	<p>Veuillez choisir un type de paiement :<br />
+	<a href="paiement-<?php echo $commande->transacId; ?>-paypal"><img src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" alt="Paypal"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	OU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="paiement-<?php echo $commande->transacId; ?>-cheque">Ch&egrave;que</a>
+</div>

@@ -1,0 +1,138 @@
+============================================
+=-=-=-=-=-=-=-=-=  OxyCast =-=-=-=-=-=-=-=-=
+============================================
+
+I - STRUCTURE DU PROJET
+-----------------------
+
+controllers/				- Contient tous les controlleurs appellés par le Frontend,
+							  il est chargé de vérifier ce qu'il y a à faire, d'inclure
+							  les models utilisés et d'inclure la vue correspondante.
+
+global/						- Il contient les fichiers statiques utilisés partout
+	global/accueil.php  	- La page d'accueil, moteur de news
+	global/config.php		- Toute la configuration
+	global/footer.php		- Le pied de page
+	global/header.php		- L'entête
+	global/init.php			- Chargé d'appeler la configuration et de définir des fonctions utiles partout comme is_online()
+
+images/						- Les images :p
+
+libs/						- Librairies : SPDO (singleton de PDO), log, UserDS (accès à la BDD d'un utilisateur), Captcha
+
+log/						- Toutes les logs (CRIT/INFO), sauf paypal
+
+models/						- Les classes permettant de gérer facilement toutes les données : Member(s), Commande, Offre, Stream
+
+paypal/						- API IPN appelé par Paypal, contient aussi les logs paypal
+
+views/						- Les vues correspondantes aux controllers
+
+.htaccess					- URL Rewriting
+
+index.php					- Frontend : il charge OB, la config, lance les logs, charge header + footer et affiche le controller demande
+
+style.css					- ...
+
+test.php					- Permet de tester rapidement toutes les classes
+
+sample.sql					- Quelques données SQL pour permettre au script de tourner correctement
+
+II - PDO ?
+----------
+
+PDO permet de gérer très facilement l'accès à la base de donnée, de plus il permet une meilleure sécurité grâce à la préparation des requêtes.
+Voici quelques exemples :
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$infos = $this->pdo->query('SELECT * FROM accounts WHERE login = \'' . $login . '\'')->fetch(PDO::FETCH_ASSOC);
+	-> Retourne un array, même effet qu'un mysql_fetch_array()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$infos = $pdo->query('SELECT * FROM clients WHERE login = \'' . trim($id) . '\'')->fetch(PDO::FETCH_OBJ);
+	-> Pareil que précedemment mais retourne un objet. Très utile pour un seul enregistrement.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$requete = $this->pdo->query('DELETE FROM accounts WHERE login = \'' . $this->login . '\'');
+	-> Ne retourne qu'une instance PDOStatement, mais vu que l'on supprime une donnée on a pas besoin de retour particulier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$requete = $pdo->query('SELECT id FROM clients WHERE login = \'' . $this->login . '\'')->fetchColumn();
+	-> Un seul champs demandé, il retourne directement la valeur de ce champs.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$requete = $pdo->prepare("UPDATE clients SET
+								login = :login,
+								............... WHERE id = :id");
+$requete->bindValue(':login', 			$this->login);
+...
+$requete->bindValue(':id', 				$this->id);
+$requete->execute();
+
+	-> Prépare, "bind" et execute une requête.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+III - Format des commentaires
+-----------------------------
+
+En début de fichier :
+/**
+ * OxyCast
+ * Gestion complète des membres
+ * @author alfo
+ * @version 1.0
+ */
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Méthode chargée de retourner la valeur de l'attribut en paramètre.
+ * @param $attribut string Le nom de l'attribut.
+ * @return string|int
+ */
+ 
+ -> 1ère ligne : Description de la méthode
+ -> 2ème ligne : @param $nom_de_la_variable type Description (Autant de lignes que de paramètres
+ -> 3ème ligne : @return type(|type|...)        -> le type de retour de la méthode. "void" si aucun retour.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Commentaire
+ -> Partout ailleurs
+ 
+IV - Brève explication de la POO
+--------------------------------
+(Je copie/colle un tuto, ce ne sont pas mes explications pour la plupart)
+
+La POO est une façon bien différente de programmer de celle que vous connaissez actuellement. Si quelqu'un vous dit qu'il programme OO, c'est qu'il crée des classes pour s'en servir ou alors qu'il se sert de classes récupérées sur Internet.
+Une classe est en fait un ensemble de fonctions et de variables. Toutes ces fonctions et variables sont placées dans cette classe.
+Dans une classe, une fonction est appelée méthode et une variable est appelée attribut (ou propriété).
+
+Une classe de base :
+
+<?php
+    class Personnage
+    {
+        private $force; // La force du personnage.
+        private $localisation; // Sa localisation.
+        private $experience; // Son expérience.
+        private $degats; // Ses dégâts.
+        
+        public function deplacer() // Une méthode qui déplacera le personnage (modifiera sa localisation).
+        {
+        }
+        
+        public function frapper() // Une méthode qui frappera un personnage (suivant la force qu'il a).
+        {
+        }
+        
+        public function gagnerExperience() // Une méthode augmentant l'attribut $experience du personnage.
+        {
+        }
+    }
+?>
+
+Etant donné qu'il n'y a pas beaucoup de classe statique on accèdera aux paramètres/variables de la classe par : $this->nom_de_la_variable;
+
+Plus d'explications ici : http://www.siteduzero.com/tutoriel-3-147180-poo-programmez-oo-en-php.html
+
+V - Modèle MVC
+--------------
+
+J'ai déjà décrit le modèle que j'utilisais plus haut. Il s'agit donc bien d'un modèle MVC un peu trafiqué.
+Ce modèle permet un classement simple et rapide de tous les fichiers en les distinguant de leur fonction.
+* Les controlleurs sont là pour gérer une action demandée pour un module donné (index.php?module=inscription&act=confirmation).
+* Les modèles/classes sont appelés par le controlleur qui va s'en servir pour traiter le code.
+* Les vues contiennent tout le HTML généré par le controlleur. Cela permet par exemple séparer codeur/HTMLer (j'ai pas trouvé mieux).

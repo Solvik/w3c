@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS `musique` (
+  `id` int(11) NOT NULL auto_increment,
+  `titre` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
+  `artiste` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
+  `filename` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
+  `path` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
+  `dernier_passage` int(11) default '0',
+  `passage` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) 
+
+CREATE TABLE IF NOT EXISTS `musique_pile` (
+  `id` int(11) NOT NULL auto_increment,
+  `id_musique` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+)

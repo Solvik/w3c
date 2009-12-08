@@ -1,0 +1,54 @@
+<div class="boxtitle">Mes playlists</div>
+<div class="content_content">
+<ul><li class="add_list"><a href="playlists-new">Ajouter une playlist</a></li></ul>
+<?php 
+if($playlists)
+{
+	foreach($playlists as $playlist)
+	{
+		$id = $playlist['id'];
+		$nom = $playlist['nom'];
+		$playlist = new PlayList($playlist['id'], $compte, $compte->getStream());
+		$musiques = $playlist->getMusiques();
+		echo '<hr /><h2>'.$nom.' &nbsp;&nbsp;&nbsp;&nbsp;
+		<small><small>
+			<a href="playlists-delete-'.$id.'">
+				<a href="javascript: if (confirm(\'Etes-vous sûr de vouloir supprimer la playlist '.utf8_encode($nom).' ?\'))
+				{ 
+					window.location.href=\'playlists-del-'.$id.'\'
+				} 
+				else { void(\'\') }; ">
+					<font style="color: red;text-decoration:none;">(Supprimer)</font>
+			</a>
+		</small></small></h2>';
+		
+		if($musiques == null) {
+			echo 'Pas de musiques';
+		} else {
+			echo '<table style="width: 98%;"><tr>
+					<th>Artiste</th>
+					<th>Titre</th>
+					<th>R&eacute;pertoire</th>
+					<th>Supprimer</th>
+				</tr>';
+			foreach($musiques as $musique)
+			{
+				$musique = getMusicInfos($musique, $compte, $stream);
+				@$toDelete = "streams/".$compte->login."-".$stream->id."/";
+				if($musique != null)
+				{
+					echo '<tr>
+							<td>'.utf8_encode($musique['artiste']).'</td>
+							<td>'.utf8_encode($musique['titre']).'</td>
+							<td>'.utf8_encode(str_replace($toDelete, "", $musique['path']).'/'.$musique['filename']).'</td>
+							<td><a href="playlists-musique-del-'.$id.'-'.$musique['id'].'" style="text-decoration:none;"><img src="images/del.png" alt=""> Supprimer</a></td>
+						</tr>';
+				}
+			}
+			echo '</table>';
+		}
+		echo '<ul><li class="add_list" style="text-align: right;margin-right: 50px;"><a href="playlists-musique-add-'.$id.'" style="text-decoration:none;">Ajouter une musique</a></li></ul>';
+	}
+}
+?>
+</div>

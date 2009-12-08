@@ -1,0 +1,40 @@
+<div class="boxtitle">Ma Programmation</div>
+<div class="content_content">
+<p><br />
+Veuillez remplir les champs suivants :</p>
+<form action="" method="post">
+<table>
+	<tr>
+		<td>Type :</td>
+		<td>
+			<select name="type">
+				<option value="playlist">Playlist</option>
+				<option value="podcast">Podcast</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Jour :</td>
+		<td><?php echo getJour($jour); ?></td>
+	</tr>
+	<tr>
+		<td>Heure de d&eacute;but :</td>
+		<td>
+			<select name="hdebut"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mdebut"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td>Heure de fin :</td>
+		<td>
+			<select name="hfin"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mfin"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" name="etape1" value="Etape 2 &gt;" /></td>
+	</tr>
+</table>
+<p style="color: red;">NB : Veuillez v&eacute;rifier que 2 &eacute;venements ne se chevauchent sinon ils risquent de perturber votre flux.</p>
+</div>

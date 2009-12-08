@@ -1,0 +1,26 @@
+<div class="boxtitle">Mes playlists</div>
+<div class="content_content">
+
+<p>Veuillez cocher les musiques &agrave; ajouter :</p>
+<table class="table music_list">
+<tr>
+	<th>#</th>
+	<th>Artiste</th>
+	<th>Titre</th>
+	<th>R&eacute;pertoire</th>
+</tr>
+<form action="playlists-musique-add-<?php echo $playlistId; ?>" method="post">
+<?php foreach($musiques as $musique): ?>
+	<tr>
+		<td><input type="checkbox" name="musiques[]" value="<?php echo $musique['id']; ?>" <?php
+		if(in_array($musique['id'], $musiquesInPlaylist)) echo 'checked';
+		?>></td>
+		<td><?php echo utf8_encode($musique['artiste']); ?></td>
+		<td><?php echo utf8_encode($musique['titre']); ?></td>
+		<td><?php echo utf8_encode($musique['chemin']); ?></td>
+	</tr>
+<?php endforeach; ?>
+<tr><td align="center"colspan="4"><input class="submit" type="submit" name="modifier" value="Envoyer" /></td></tr>
+</form>
+</table>
+</div>

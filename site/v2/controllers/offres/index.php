@@ -1,0 +1,1 @@
+<?php include VIEW.'index.php';

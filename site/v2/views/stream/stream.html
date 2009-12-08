@@ -1,0 +1,74 @@
+<div class="boxtitle">Mon stream</div>
+<div class="content_content">
+
+<p><u>Information &agrave; propos de votre offre:</u><br />
+Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream->offre->bitrate ."</b> kbps / <b>". $stream->offre->slots ." slots</b> jusqu'au <b>".$stream->dateFin ."</b>"; ?>
+<div align="center">
+
+<u>ETAT DE VOTRE STREAM:</u>
+<br />
+<?php 
+
+    // affichage de l'état
+    if ($stream->status 		== 'en cours') 			{ echo '<img src="images/icons/diffuse.png" alt="" />&nbsp;Votre stream est en cours de diffusion.</b></u>'; }
+    else if ($stream->status 	== 'programme')			{ echo '<img src="images/icons/bell.png" alt="" />&nbsp;Votre stream est en <u><b>cours de cr&eacute;ation.</b></u>'; }
+    else if ($stream->status 	== 'commande') 			{ echo '<img src="images/icons/bell.png" alt="" />&nbsp;Stream <u><b>command&eacute;</b></u>.<br /> En attente de paiement/validation.</b></u>'; }
+    else if ($stream->status 	== 'suspendu') 			{ echo '<img src="images/icons/delete.png" alt="" />&nbsp;Votre stream est <u><b>suspendu</b></u>'; }
+    else if ($stream->status 	== 'change_password')	{ echo '<img src="images/icons/bell.png" alt="" />&nbsp;Votre stream est en cours de modification.'; }
+    else if ($stream->status 	== 'termine')			{ echo '<img src="images/icons/delete.png" alt="" />&nbsp;Votre stream a expir&eacute;.'; }
+	
+	if($stream->status != 'suspendu') echo '<a href="renew"><img src="images/renew.png" alt="" style="border:none;" />Renouveller mon Stream</a>';
+	
+      // si le stream n'est pas suspendu ou bien pas termine, on affiche le formulaire.
+      if ($stream->status != 'suspendu' AND $stream->status != 'termine'):
+		if(!empty($erreur)) echo '<p style="color:red;">'.$erreur.'</p>'; ?>
+<form action="stream-modifier" method="post">
+<table width="850" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td align="right">Nom de votre stream *</td>
+    <td colspan="2"><input type="text" name="nom" value="<?php echo $stream->nom; ?>" /></td>
+    </tr>
+  <tr>
+    <td align="right">Description</td>
+    <td colspan="2"><input type="text" name="description" value="<?php echo $stream->description; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Genre</td>
+    <td colspan="2"><input type="text" name="genre" value="<?php echo $stream->genre; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Mountpoint *</td>
+    <td colspan="2"><input type="text" name="mountpoint" value="<?php echo $stream->mountpoint; ?>" />.<select name="format_output"><option value="mp3" <?php if($stream->format_output == "mp3") echo 'selected="selected"' ?>>mp3</option><option value="ogg" <?php if($stream->format_output == "ogg") echo 'selected="selected"' ?>>ogg</option></td>
+  </tr>
+  <tr>
+    <td align="right">Live</td>
+    <td colspan="2"><input type="text" value="live" disabled="disabled" />.<select name="format_live"><option value="mp3" <?php if($stream->format_live == "mp3") echo 'selected="selected"' ?>>mp3</option><option value="ogg" <?php if($stream->format_live == "ogg") echo 'selected="selected"' ?>>ogg</option></td>
+  </tr>
+  <tr>
+    <td align="right">URL</td>
+    <td colspan="2"><input type="text" name="url" value="<?php echo $stream->url; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Mot de passe (pour le live) *</td>
+    <td colspan="2"><input type="text" name="password" value="<?php echo $stream->password; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Port</td>
+    <td colspan="2"><?php echo $stream->port; ?></td>
+  </tr>
+<br />
+<br />
+  <tr>
+    <td>&nbsp;</td>
+    <td><input class="submit" type="submit" name="modifier" /></td>
+  </tr>
+</table>
+</form>
+</div>
+
+<p><u>Mon flux</u></br />
+<div align="center">Votre flux est disponible &agrave; l'adresse:<br /><input type="text" name="nom" size="40" value="http://www.oxycast.net:8000/<?php echo $stream->mountpoint; ?>.mp3" /></div>
+
+<?php endif; ?>
+</div>
+

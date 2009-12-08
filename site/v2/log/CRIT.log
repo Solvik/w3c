@@ -1,0 +1,38 @@
+USER - 26/09/2009 - 15:43:22 : Unknown column 'pass' in 'where clause'
+#0  SPDO->__call(query, Array ([0] => SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = ''))
+#1  SPDO->query(SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\models\Members.class.php:28]
+#2  Members::getCountByCond(login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\controllers\login\index.php:14]
+#3  include(I:\OxyRadio\site\v2\controllers\login\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
+
+ - 26/09/2009 - 15:44:02 : Unknown column 'pass' in 'where clause'
+#0  SPDO->__call(query, Array ([0] => SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = ''))
+#1  SPDO->query(SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\models\Members.class.php:28]
+#2  Members::getCountByCond(login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\controllers\login\index.php:14]
+#3  include(I:\OxyRadio\site\v2\controllers\login\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
+
+ - 26/09/2009 - 15:47:10 : Unknown column 'pass' in 'where clause'
+#0  SPDO->__call(query, Array ([0] => SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = ''))
+#1  SPDO->query(SELECT COUNT(*) AS count FROM clients WHERE login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\models\Members.class.php:28]
+#2  Members::getCountByCond(login = 'dfj' AND pass = 'MzdlMzY5OTkwMGQ2OTlhZjE5OGQ0NTE0YmZiZTFhMzY3ZjU1NTlmNA==' AND cle_conf = '') called at [I:\OxyRadio\site\v2\controllers\login\index.php:14]
+#3  include(I:\OxyRadio\site\v2\controllers\login\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
+
+ - 26/09/2009 - 20:39:38 : Unknown column 'name' in 'where clause'
+#0  SPDO->__call(query, Array ([0] => SELECT COUNT(*) AS count FROM streams WHERE name = 'nom_du_flux2'))
+#1  SPDO->query(SELECT COUNT(*) AS count FROM streams WHERE name = 'nom_du_flux2') called at [I:\OxyRadio\site\v2\models\Stream.class.php:83]
+#2  Stream::exist(name, nom_du_flux2) called at [I:\OxyRadio\site\v2\controllers\stream\modifier.php:18]
+#3  include(I:\OxyRadio\site\v2\controllers\stream\modifier.php) called at [I:\OxyRadio\site\v2\index.php:29]
+
+ - 27/09/2009 - 17:26:43 : Unknown column 'prix' in 'field list'
+#0  SPDO->__call(query, Array ([0] => SELECT prix FROM offers WHERE offerId = 1))
+#1  SPDO->query(SELECT prix FROM offers WHERE offerId = 1) called at [I:\OxyRadio\site\v2\models\Offre.class.php:44]
+#2  Offre::getPrice(1) called at [I:\OxyRadio\site\v2\views\paiement\paypal.html:8]
+#3  include(I:\OxyRadio\site\v2\views\paiement\paypal.html) called at [I:\OxyRadio\site\v2\controllers\paiement\index.php:25]
+#4  include(I:\OxyRadio\site\v2\controllers\paiement\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
+
+ - 27/09/2009 - 17:27:04 : Unknown column 'offerId' in 'where clause'
+#0  SPDO->__call(query, Array ([0] => SELECT prixEuros FROM offers WHERE offerId = 1))
+#1  SPDO->query(SELECT prixEuros FROM offers WHERE offerId = 1) called at [I:\OxyRadio\site\v2\models\Offre.class.php:44]
+#2  Offre::getPrice(1) called at [I:\OxyRadio\site\v2\views\paiement\paypal.html:8]
+#3  include(I:\OxyRadio\site\v2\views\paiement\paypal.html) called at [I:\OxyRadio\site\v2\controllers\paiement\index.php:25]
+#4  include(I:\OxyRadio\site\v2\controllers\paiement\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
+

@@ -1,0 +1,67 @@
+<div class="boxtitle">Ma Programmation</div>
+<div class="content_content">
+<p><br />
+Veuillez remplir les champs suivants :</p>
+<form action="" method="post">
+<input type="hidden" name="hdebut" value="<?php echo $hdebut; ?>" />
+<input type="hidden" name="mdebut" value="<?php echo $mdebut; ?>" />
+<input type="hidden" name="hfin" value="<?php echo $hfin; ?>" />
+<input type="hidden" name="mfin" value="<?php echo $mfin; ?>" />
+<table>
+	<tr>
+		<td>Type :</td>
+		<td><?php echo ucfirst($event->type); ?></td>
+	</tr>
+	<tr>
+		<td>Jour :</td>
+		<td><?php echo getJour($event->jour); ?></td>
+	</tr>
+	<tr>
+		<td>Heure de d&eacute;but :</td>
+		<td>
+			<select name="hdebut"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->heure_debut == $i) echo 'selected'; echo '>'.$i.' h</option>'; } ?></select> :
+			<select name="mdebut"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->minute_debut == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td>Heure de fin :</td>
+		<td>
+			<select name="hfin"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->heure_fin == $i) echo 'selected'; echo '>'.$i.' h</option>'; } ?></select> :
+			<select name="mfin"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->minute_fin == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td><?php echo ucfirst($event->type); ?> :</td>
+		<td>
+			<select name="action">
+				<?php 
+if($event->type == 'playlist')
+{
+	$playlists = PlayList::getPlaylists($compte);
+	foreach ($playlists as $playlist)
+	{
+		echo '<option value="'.$playlist['id'].'"';
+		if($event->action == $playlist['id']) echo 'selected';
+		echo '>'.$playlist['nom'].'</option>';
+	} 
+}
+else
+{
+	$podcasts = getPodcasts($compte);
+	foreach ($podcasts as $podcast)
+	{
+		echo '<option value="'.$podcast['id'].'"';
+		if($event->action == $podcast['id']) echo 'selected';
+		echo '>'.$podcast['titre'].'</option>';
+	} 
+}
+
+?>			</select>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" name="edit" value="Modifier" /></td>
+	</tr>
+</table>
+</div>

@@ -1,0 +1,60 @@
+<div class="boxtitle">Commande d'un pack</div>
+<div class="content_content">
+
+<form action="commande" method="post"><br />
+<?php if(!empty($erreur)) echo '<p style="color:red;">'.$erreur.'</p>'; ?>
+<table width="718" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td width="127" align="right">Votre offre</td>
+    <td colspan="2">
+	  <select name="offer">
+	    <option value="1" <?php if ($offre == "S")   echo "selected";  ?>>Pack S (50 auditeurs)</option>
+	    <option value="2" <?php if ($offre == "L")   echo "selected"; ?>>Pack L (100 auditeurs)</option>
+	    <option value="3" <?php if ($offre == "XL")  echo "selected"; ?>>Pack XL (200 auditeurs)</option>
+	    <option value="4" <?php if ($offre == "XXL") echo "selected"; ?>>Pack XXL (500 auditeurs)</option>
+	  </select>
+	</td>
+  </tr>
+  <tr>
+    <td align="right">Nom de votre flux *</td>
+    <td colspan="2"><input type="text" name="nom"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Point de montage (mountpoint) *</td>
+    <td colspan="2"><input type="text" name="mountpoint"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Mot de passe pour le live *</td>
+    <td colspan="2"><input type="text" name="password"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Description</td>
+    <td colspan="2"><input type="text" name="description"  /></td>
+  </tr>
+  <tr>
+   <td align="right">Genre</td>
+    <td colspan="2"><input type="text" name="genre"  /></td>
+  </tr>
+  <tr>
+    <td align="right">URL</td>
+    <td colspan="2"><input type="text" name="url"  /></td>
+  </tr>
+  <tr>
+   <td align="right">&nbsp;</td>
+   <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+   <td>&nbsp;</td>
+   <td colspan="2">Les champs marqu&eacute;s d'une <b>*</b> sont obligatoires</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2" align="center"><input class="submit" type="submit" name="commander" /></td>
+  </tr>
+</table>
+</form>
+</div>

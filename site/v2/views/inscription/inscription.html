@@ -1,0 +1,66 @@
+<div class="boxtitle">Inscription</div>
+<div class="content_content">
+  <p>Veuillez remplir le formulaire pour proc&eacute;d&eacute; &agrave; votre inscription.</p>
+<?php if(!empty($erreur)) echo '  <p style="color: red;">'.$erreur.'</p>' ?>
+
+<form action="" method="post"><br />
+<table width="718" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td width="127" align="right">Pseudo *</td>
+    <td colspan="2"><input type="text" name="pseudo"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Adresse mail *</td>
+    <td colspan="2"><input type="text" name="mail"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Mot de passe *</td>
+    <td colspan="2"><input type="password" name="mdp"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Confirmation *</td>
+    <td colspan="2"><input type="password" name="mdp_conf"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Nom</td>
+    <td colspan="2"><input type="text" name="nom"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Pr&eacute;nom</td>
+    <td colspan="2"><input type="text" name="prenom"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Adresse</td>
+    <td colspan="2"><input type="text" name="adresse"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Code Postal</td>
+    <td colspan="2"><input type="text" name="cp"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Ville</td>
+    <td colspan="2"><input type="text" name="ville"  /></td>
+  </tr>
+  <tr>
+    <td align="right">Recopiez <img src="libs/captcha.php" alt="Captcha" /></td>
+	<td colspan="2"><input type="text" name="captcha" id="captcha" /></td>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">Les champs marqu&eacute;s d'une <b>*</b> sont obligatoires</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2" align="center"><input class="submit" type="submit" name="inscrire" /></td>
+  </tr>
+</table>
+</form>
+
+</div>

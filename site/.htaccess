@@ -1,0 +1,39 @@
+AuthUserFile /var/subversion/depot/w3c/site/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Secret Section"
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>
+
+
+# Rewriting
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^$ index.php
+RewriteRule ^inscription$ index.php?page=inscription [L]
+RewriteRule ^password$ index.php?page=pass-perdu [L]
+RewriteRule ^infos$ index.php?page=modif-infos [L]
+RewriteRule ^deconnexion$ index.php?deconnexion=ok [L]
+RewriteRule ^offres$ index.php?page=offres [L]
+RewriteRule ^support$ index.php?page=support [L]
+RewriteRule ^password/([a-f0-9]{32})$ index.php?page=pass-perdu&recover=$1 [L]
+RewriteRule ^stream$ index.php?page=stream [L]
+RewriteRule ^playlists$ index.php?page=playlist [L]
+RewriteRule ^musique$ index.php?page=musique [L]
+RewriteRule ^programmation$ index.php?page=programmation [L]
+RewriteRule ^programmation-([1-7])$ index.php?page=programmation&jour=$1 [L]
+RewriteRule ^monsite$ index.php?page=mon-site [L]
+RewriteRule ^apropos$ index.php?page=apropos [L]
+RewriteRule ^cgu$ index.php?page=cgu [L]
+RewriteRule ^root$ index.php?page=root [L]
+RewriteRule ^root/client$ index.php?page=root&act=client [L]
+RewriteRule ^root/del/([0-9]*)$ index.php?page=root&act=del&id=$1 [L]
+RewriteRule ^root/suspend/([0-9]*)$ index.php?page=root&act=suspend&id=$1 [L]
+RewriteRule ^contact$ index.php?page=contact [L]
+RewriteRule ^irc$ index.php?page=support&act=irc [L]
+RewriteRule ^commande-S$ index.php?page=offres&act=commande&offre=S [L]
+RewriteRule ^commande-L$ index.php?page=offres&act=commande&offre=L [L]
+RewriteRule ^commande-XL$ index.php?page=offres&act=commande&offre=XLL [L]
+RewriteRule ^commande-XXL$ index.php?page=offres&act=commande&offre=XXL [L]

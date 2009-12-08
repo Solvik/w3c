@@ -1,0 +1,58 @@
+<div class="boxtitle">Contact</div>
+<div class="content_content">
+<p style="font-size: 14px;"><br /><img src="images/icons/information.png" alt="" />
+Pour tout demande d'informations, de partenariat, n'h&eacute;sitez pas &agrave; nous contacter !</p>
+<?php if(!empty($erreur)) echo '  <p style="color: red;">'.$erreur.'</p>' ?>
+<form action="contact" method="post">
+<table width="718" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td width="127" align="right">Nom</td>
+    <td colspan="2"><input type="text" name="nom"  /></td>
+    </tr>
+  <tr>
+    <td align="right"><label>E-mail</label></td>
+    <td colspan="2"><input type="text" name="mail"  /></td>
+    </tr>
+  <tr>
+    <td align="right"><label>Sujet</label></td>
+    <td colspan="2"><?php
+
+echo '<select name="sujet">';
+echo '<option value="">--- Choisissez ---</option>';
+foreach ($sujet as $choix => $email)
+    echo '<option value="'.$choix.'">'.$choix.'</option>';
+echo "</select>";
+
+?></td>
+    </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2">Et maintenant votre message :</td>
+    </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2"><textarea class="textarea" name="message" cols="50" rows="10"></textarea></td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+    </tr>
+  <tr>
+    <td align="left">&nbsp;</td>
+    <td colspan="2" align="left">Tous les champs sont obligatoires</td>
+    </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td colspan="2" align="center"><input class="submit" type="submit" name="envoyer" /></td>
+  </tr>
+</table>
+</form>
+</div>
