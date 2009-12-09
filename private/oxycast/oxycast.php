@@ -1,5 +1,4 @@
 <?php
-
 require("conf.php");
 
 // on regarde qu'est ce qui existe dans la table plannification pour voir si y a pas une playlist/podcast pour l'heure actuelle
@@ -34,6 +33,10 @@ if (mysql_num_rows($resultSearchAction) == 1)
       $podcast = mysql_fetch_object($resultPodcast);
 
       echo $podcast->path.'/'.$podcast->filename;
+      echo "podcast !\n";
+      // on met a jour l'heure de dernier passage et le nb de passage
+		
+
     }
 	
   // si c'est une playlist
@@ -59,6 +62,7 @@ if (mysql_num_rows($resultSearchAction) == 1)
 	  // on met a jour le dernier passage et le nb de passage
 	  $doUpdate = 'UPDATE `musique` SET dernier_passage = "'.time().'", passage = passage + 1 WHERE id = '.$searchMusiqueFromPlaylist->id.' LIMIT 1';
 	  mysql_query($doUpdate);
+	  echo "playlist !\n";
 	}
       else
 	exit();

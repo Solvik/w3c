@@ -1,5 +1,5 @@
 <?php
-# ligne de commentaire a supprimer (test de commit)
+
 $host = "localhost";
 $user = "oxycast";
 $base = "oxycast";
@@ -25,7 +25,9 @@ function connect_icecast($host, $port)
     fclose($fp);
     return $page;
 }
+
 echo $page;
+
 function tab_icecast($host, $port)
 {
   $contenu = connect_icecast($host, $port);
@@ -37,29 +39,21 @@ function tab_icecast($host, $port)
       if (preg_match_all('`(/[^,]*),,([^,]*),([^,]*),([^,]*),([^-]*) - ([^,]*),([^,<\/]*)`', $contenu, $resultat))
 	{
 	  foreach($resultat[1] as $numPoint => $mountName)
-	      {
-		foreach ($tabChamps as $index => $champ)
-		{		
-		  $tabIce[$mountName][$champ] = $resultat[$index][$numPoint];
-		}
-	      }
-	    return $tabIce;
-	  }
-      else
-	{
-	  return false;
+	    foreach ($tabChamps as $index => $champ)
+	      $tabIce[$mountName][$champ] = $resultat[$index][$numPoint];
+	  return $tabIce;
 	}
+      else
+	return false;
       }
     else
-      {
-        return false;
-      }
+      return false;
 }
 
 
 $tabIceCast = tab_icecast('www.oxycast.net', 8000);
 
-if($tabIceCast)
+if ($tabIceCast)
 {
   foreach($tabIceCast as $key => $value)
     {
@@ -77,8 +71,9 @@ if($tabIceCast)
       $selectInfosClient = 'SELECT * FROM `clients` WHERE `id` = "'. $InfoStream->clientId .'"';
       $resultInfosClient = mysql_query($selectInfosClient);
       $InfosClient = mysql_fetch_object($resultInfosClient);
+      $nbaudi = $value['listeners'];
 
-      echo 'Sur ' . substr($key,1,-4)  . ' il y a ' . $nbaudi = $value['listeners'] . ' auditeurs.'."\n";
+      echo 'Sur ' . substr($key,1,-4)  . ' il y a ' . $nbaudi . ' auditeurs.'."\n";
 
       // si le nb d'audis est superieur a ce que propose l'offre, dede ca va couper
       if ($nbaudi > $InfosOffer->slots)
@@ -92,9 +87,15 @@ if($tabIceCast)
 	  $content .= "A tres bientot sur http://www.oxycast.net\n";
 	  $headers = "From: OXYCAST.net <contact@oxycast.net>\r\n";
 	  $headers .= "Content-Type:text/plain; charset=\"utf-8\"\r\n";
-	  mail ($recipient, $subject, $content, $headers);
-
+	  mail($recipient, $subject, $content, $headers);
+	  
+	  mail("root@oxycast.net",
+	       "Depassement d'auditeur",
+	       "Attention, ".$InfosClient->nom.", stream ".$InfoStream->id." a depasse le nb d'audi !!!",
+	       $headers);
 	}
+      else
+	echo "cool\n";
     }
 }
 else
