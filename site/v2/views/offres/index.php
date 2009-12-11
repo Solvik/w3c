@@ -56,14 +56,13 @@
     </div><!--end of boxes content-->
 	
 	 	<div id="boxes_content">
-    
+    <div style="padding-left: 150px">
     	<div class="box">
         	<div class="box_content">
         	<div class="boxtitle">Pack XXL</div>
 			<ul>
 				<li>500 auditeurs</li>
 				<li>160 kbps</li>
-				<li>MP3 & OGG</li>
 				<li>D&eacute;crochage automatique pour live</li>
 				<li>Syst&egrave;me de playlist</li>
 				<li>Graphiques</li>
@@ -79,12 +78,17 @@
         	<div class="box_content">
         	<div class="boxtitle">Offre sur mesure</div>
              <ul>
-	       <li>Nous contacter par mail.</li> 
+			<li>Des d&eacute;dicaces ?</li>
+			<li>Des relays haut d&eacute;bit/bas d&eacute;bit ?</li>
+			<li>Un serveur infog&eacute;r&eacute; ?</li>
+			<li>Une formation ?</li>
+			<li>Un besoin sp&eacute;cifique ?</li>
              </ul>
- <br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br />
  <div align="center"><a href="contact" class="button"><span class="add">Nous contacter</span></a></div>
             </div>                  
         </div>
                 
         
     </div><!--end of boxes content-->
+</div>
