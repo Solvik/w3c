@@ -16,7 +16,7 @@ else
 			{
 				if(!Stream::exist('mountpoint', $_POST['mountpoint'], $compte->getStream()->mountpoint))
 				{
-					if(ereg("^[[:alnum:]]+$", trim($_POST['nom'])) AND ereg("^[[:alnum:]]+$", trim($_POST['mountpoint'])))
+					if(ereg("^[[:alnum:]]+$", trim($_POST['nom'])) AND ereg("^[[:alnum:]]+$", trim($_POST['mountpoint'])) AND ereg("^[[:alnum:]]+$", trim($_POST['password'])))
 					{
 						//Enfin !
 						$stream = $compte->getStream();
@@ -39,7 +39,7 @@ else
 						$erreur = 'Les modifications ont &eacute;t&eacute; effectu&eacute;es.';
 						include VIEW.'stream.html';
 					} else {
-						$erreur = 'Le nom du stream et le mountpoint doivent &ecirc;tre uniquement compos&eacute;s de caract&egrave;res alphanum&eacute;riques (sans espaces).';
+						$erreur = 'Le nom du stream, mountpoint et le mot de passe doivent &ecirc;tre uniquement compos&eacute;s de caract&egrave;res alphanum&eacute;riques (sans espaces).';
 						include VIEW.'stream.html';
 					}
 				} else {

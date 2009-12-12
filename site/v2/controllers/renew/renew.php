@@ -3,12 +3,12 @@ if(!is_online()) { include NON_CONNECTE; exit(); }
 
 $compte = new Member(Member::EXISTANT, $_SESSION['login']);
 
-if($compte->getStream()->hasStream() === false OR $stream->getStream()->status == 'suspendu') { include VIEW.'pas_de_stream.html'; }
+if($compte->getStream()->hasStream() === false OR $compte->getStream()->status == 'suspendu') { include VIEW.'pas_de_stream.html'; }
 else {
 	$stream = $compte->getStream();
 	$offre = new Offre(intval($stream->offerId));
 	$commande = new Commande(0);
-	$commande->create($compte->id, 'none', 'waiting', $offre->prix, intval($stream->offerId)), $compte->mail);
+	$commande->create($compte->id, 'none', 'waiting', $offre->prix, intval($stream->offerId), $compte->mail);
 						
 	$mail="Bonjour {$compte->login},
 

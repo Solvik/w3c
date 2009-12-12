@@ -87,8 +87,7 @@ class miniSite
 	     $subject = ($type=='inst')?'Installation de votre mini-site':'Mise à jour de votre mini-site';
 	     $message = 'Bonjour '.$this->userLogin.',';
 	     if ($type=='inst') {
-	     	$message .= '
-		Vous avez récemment demandé l\'installation d\'un stream sur OxyCast,'."\n";
+	     	$message .= 'Vous avez récemment demandé l\'installation d\'un stream sur OxyCast,'."\n";
 	     	$message .= 'un mini-site pour ce stream à automatiquement été installé.'."\n";
 	     	$message .= 'Il vous faut maintenant le configurer en vous rendant sur '.$this->siteURL.''."\n";
 	     	$message .= 'Nous vous remercions pour votre confiance. L\'équipe d\'OxyCast.'."\n";

@@ -17,7 +17,7 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
     else if ($stream->status 	== 'change_password')	{ echo '<img src="images/icons/bell.png" alt="" />&nbsp;Votre stream est en cours de modification.'; }
     else if ($stream->status 	== 'termine')			{ echo '<img src="images/icons/delete.png" alt="" />&nbsp;Votre stream a expir&eacute;.'; }
 	
-	if($stream->status != 'suspendu') echo '<a href="renew"><img src="images/renew.png" alt="" style="border:none;" />Renouveller mon Stream</a>';
+	if($stream->status != 'suspendu') echo '<br /><a href="renew"><img src="images/renew.png" alt="" style="border:none;" />Renouveller mon Stream</a>';
 	
       // si le stream n'est pas suspendu ou bien pas termine, on affiche le formulaire.
       if ($stream->status != 'suspendu' AND $stream->status != 'termine'):
