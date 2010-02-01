@@ -58,7 +58,7 @@ function getPodcasts (Member $compte)
 {
 	@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 	$podcasts = array();
-	$query = 'SELECT * FROM `musique` WHERE WHERE `path` LIKE \'%/podcast\' ORDER BY `filename` ASC';
+	$query = 'SELECT * FROM `musique` WHERE `path` LIKE \'%/podcast\' ORDER BY `filename` ASC';
 	$i = 0;
 	
 	foreach($pdo->query($query) as $podcast)
