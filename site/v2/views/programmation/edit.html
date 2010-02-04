@@ -20,14 +20,14 @@ Veuillez remplir les champs suivants :</p>
 		<td>Heure de d&eacute;but :</td>
 		<td>
 			<select name="hdebut"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->heure_debut == $i) echo 'selected'; echo '>'.$i.' h</option>'; } ?></select> :
-			<select name="mdebut"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->minute_debut == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
+			<select name="mdebut"><?php for($i = 0; $i <=59; $i++) { echo '<option value="'.$i.'"'; if($event->minute_debut == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
 		</td>
 	</tr>
 	<tr>
 		<td>Heure de fin :</td>
 		<td>
 			<select name="hfin"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->heure_fin == $i) echo 'selected'; echo '>'.$i.' h</option>'; } ?></select> :
-			<select name="mfin"><?php for($i = 0; $i <=24; $i++) { echo '<option value="'.$i.'"'; if($event->minute_fin == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
+			<select name="mfin"><?php for($i = 0; $i <=59; $i++) { echo '<option value="'.$i.'"'; if($event->minute_fin == $i) echo 'selected'; echo '>'.$i.' mn</option>'; } ?></select>
 		</td>
 	</tr>
 	<tr>
