@@ -15,14 +15,14 @@ function checkLastZik()
 
 $time = time();
 
-$selectSearchAction = 'SELECT * FROM `planification` WHERE (`heure_debut` >= "'.date("G").'" AND `heure_debut` = `heure_fin` AND `minute_fin` >= "'.intval(date("i")).'") 
-OR (`heure_debut` >= "'.date("G").'" AND `heure_debut` > `heure_fin` AND `heure_fin` >= "'.date("G").'");';
+$selectSearchAction = 'SELECT * FROM `planification` WHERE (`heure_debut` >= "'.date("G").'" AND `heure_debut` = `heure_fin` AND `minute_fin` >= "'.intval(date("i")).'") OR
+(`heure_debut` <= "'.date("G").'" AND (`heure_fin` > "'.date("G").'" OR (`heure_fin`= "'.date("G").'" AND `minute_fin` >= "'.intval(date("i")).'")));';
 $resultSearchAction = mysql_query($selectSearchAction);
 
-if (mysql_num_rows($resultSearchAction) == 1) 
+if (mysql_num_rows($resultSearchAction) == 1)
 {
   // on mate quelle est l'action
-  $action = mysql_fetch_object($resultSearchAction);	
+  $action = mysql_fetch_object($resultSearchAction);
 
   // si c'est un podcast
   if ($action->type == "podcast")
@@ -34,11 +34,8 @@ if (mysql_num_rows($resultSearchAction) == 1)
 
       echo $podcast->path.'/'.$podcast->filename;
       echo "podcast !\n";
-      // on met a jour l'heure de dernier passage et le nb de passage
-		
-
     }
-	
+
   // si c'est une playlist
   else if ($playPlaylist = $action->type == "playlist")
     {
@@ -77,6 +74,7 @@ else
   $resultSelectMusique = mysql_query($selectMusique);
   $musiqueToPlay = mysql_fetch_object($resultSelectMusique);
 
+echo $checkLastZik;
   if (checkLastZik() != $searchMusiqueFromPlaylist->titre)
     {
       // on joue la musique
