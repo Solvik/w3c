@@ -32,6 +32,7 @@ else
 						if($_POST['format_output'] == 'mp3' OR $_POST['format_output'] == 'ogg')
 							$stream->format_output    = $_POST['format_output'];
 						else $stream->format_output   = 'mp3';
+						$stream->status = 'change_password';
 						$stream->save();
 						
 						//echo '<p style="text-align: center;color: green;"><strong>Les modifications ont &eacute;t&eacute; effectu&eacute;es.</strong></p>';
