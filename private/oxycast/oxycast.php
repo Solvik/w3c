@@ -74,6 +74,7 @@ else
   $resultSelectMusique = mysql_query($selectMusique);
   $musiqueToPlay = mysql_fetch_object($resultSelectMusique);
 
+echo $checkLastZik;
   if (checkLastZik() != $searchMusiqueFromPlaylist->titre)
     {
       // on joue la musique

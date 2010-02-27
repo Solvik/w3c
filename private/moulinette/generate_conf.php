@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 /*
  ** Generation des fichiers de configuration liquidsoap
@@ -28,7 +28,7 @@ function generateConf($filename,
   fwrite($fp, 'set("harbor.port",'.$port.')'."\n");
   fwrite($fp, 'set("harbor.password","'.$password.'")'."\n");
   fwrite($fp, 'harbor = "live.'.$format_live.'"'."\n");
-  fwrite($fp, 'emi = resample(ratio=interactive.float("test",1.005),input.harbor(logfile="",harbor))'."\n\n");
+  fwrite($fp, 'emi = input.harbor(harbor)'."\n\n");
 
   /*
    ** Diffusion
@@ -39,7 +39,7 @@ function generateConf($filename,
   fwrite($fp, 'host = "oxycast.net"'."\n");
   fwrite($fp, 'port = 8000'."\n");
   fwrite($fp, 'user = "source"'."\n"); 
-  fwrite($fp, 'password = "n1ntend0"'."\n");
+  fwrite($fp, 'password = "ZHF7YwyrnfedE"'."\n");
   if ($description != "")
     fwrite($fp, 'desc = "'.$description.'"'."\n");
   else
@@ -51,40 +51,126 @@ function generateConf($filename,
   fwrite($fp, 'genre = "'.$genre.'"'."\n"); 
   fwrite($fp, 'nom = "'.$nom.'"'."\n"); 
   fwrite($fp, 'bitrate = '.$bitrate.''."\n");
-  fwrite($fp, 'mountpoint = "'.$mountpoint.'.'.$format_output.'"'."\n\n");
-
+  fwrite($fp, 'mountpoint = "'.$mountpoint.'.'.$format_output.'"'."\n");
+  fwrite($fp, 'jingles_folder = "/home/oxycast/streams/'.$login.'-'.$idStream.'/public/jingles"'."\n\n");
   /*
    ** Automation, transition, jingles detection blanc
    */
 
+  fwrite($fp,  "###############\n#Jingles and co\n");
+  fwrite($fp, 'def next(j,a,b)
+  add(normalize=false,
+          [ sequence(merge=true,
+                     [ blank(duration=3.),
+                       fade.initial(duration=6.,b) ]),
+            sequence([fade.final(duration=9.,a),
+                      j,fallback([])]) ])
+end
 
-  fwrite($fp, "######################\n");
-  fwrite($fp, "# Automation + extras\n");
+
+def jingle_fade (~start_next=5.,~fade_in=5.,~fade_out=5.,
+                 ~width=1.,~conservative=false,~jingles,
+                 ~period,~start_before,s)
+  fade.out = fade.out(duration=fade_out)
+  fade.in = fade.in(duration=fade_in)
+
+  # Une queue pour les jingles
+  jingles_queue = request.queue()
+
+  # Une reference sur une string representant un int
+  x = ref 0
+
+  # On definit une fonction toggle:
+  def do_jingle() =
+    current = !x
+    if current >= period then
+      x := 0
+      true
+    else
+      x := (current+1)
+      false
+    end
+  end
+
+  log = log(label="jingle_fade")
+
+  def transition (a, b, ma, mb, sa, sb)
+    if do_jingle() then
+      log("Transition avec jingle")
+      # Récupère un jingle
+      jingle = jingles()
+      # Récupère sa durée
+      jingle_len = file.duration(jingle)
+      log("Jingle: #{jingle}, duration: #{jingle_len}")
+      # On ajoute le jingle à la queue:
+      ignore(server.execute("#{source.id(jingles_queue)}.push #{jingle}"))
+      # On va supperposer les deux premières et dernières
+      # secondes du jingle
+      delay_in =
+        if jingle_len >= start_before then
+          jingle_len - start_before
+        else
+          jingle_len
+        end
+      delay_out =
+        if fade_out >= start_before then
+          fade_out - start_before
+        else
+          fade_out
+        end
+      # On crée la source jingle
+      jingle = sequence(merge=true,[blank(duration=delay_out),jingles_queue])
+      sb = sequence(merge=true,[blank(duration=delay_in),fade.in(sb)])
+      add(normalize=false,[sb,fade.out(sa),jingle])
+    else
+      log("Transition sans jingle")
+      # Transition de base:
+      add(normalize=false,[fade.in(sb),fade.out(sa)])
+    end
+  end
+
+  smart_cross(transition,
+               width=width,
+               duration=start_next,conservative=conservative,
+               s)
+end'."\n\n");
+
+
   fwrite($fp, 'def trans(j, a, b)'."\n");
   fwrite($fp, '   add(    normalize=false,'."\n");
   fwrite($fp, '       [   sequence(merge=true, [ j, fade.initial(duration=2., b) ]),'."\n");
   fwrite($fp, '           fade.final(duration=1., a) ])'."\n");
   fwrite($fp, 'end'."\n\n");
-  fwrite($fp, 'jingles = playlist.safe(reload=3600,"/home/oxycast/streams/'.$login.'-'.$idStream.'/public/jingles")'."\n");
+  
+  fwrite($fp, 'jingles = fun () -> list.hd(get_process_lines("find "^jingles_folder^" -name \'*.mp3\' -or -name \'*.ogg\' | sort -R | head -1"))'."\n");
   fwrite($fp, 'pls = request.dynamic(id="scheduler",'."\n");
   fwrite($fp, '    fun () ->'."\n");
-  fwrite($fp, '      request(get_process_output("php /home/oxycast/streams/'.$login.'-'.$idStream.'/oxycast.php")))'."\n");
+  fwrite($fp, '      request.create(list.hd(get_process_lines("php /home/oxycast/streams/'.$login.'-'.$idStream.'/oxycast.php"))))'."\n");
   fwrite($fp, 'pls = skip_blank(threshold=-35.,length=7.,pls)'."\n");
-  fwrite($fp, 'pls = dole_fade(jingles=jingles,pls)'."\n");
-  fwrite($fp, 'radio = mksafe(fallback(track_sensitive = false, transitions=[trans(jingles), trans(jingles)], [emi, pls]))'."\n\n");
+  fwrite($fp, 'pls = if jingles() != "" then jingle_fade(jingles=jingles, period=0, start_before=4., pls) else pls end'."\n");
+  fwrite($fp, 'radio = if jingles() != "" then
+  jingles_playlist = playlist.safe(reload=3600, jingles_folder)
+  mksafe(fallback(track_sensitive = false, transitions=[trans(jingles_playlist), trans(jingles_playlist)], [emi, pls]))
+else
+  mksafe(fallback(track_sensitive = false, [emi, pls]))
+end
+
+');
 
   /*
    ** Mountpoints
    */
 
-  fwrite($fp, "######################\n");
-  fwrite($fp, "# Mountpoint et relay\n");
+  fwrite($fp, "######################
+# Mountpoint et relay
+
+");
   if ($format_output == "mp3")
-    fwrite($fp, 'output.icecast.mp3(mount=mountpoint, id="liq", name=nom, bitrate=bitrate,'."\n");
+    fwrite($fp, 'output.icecast(%mp3(bitrate=160),mount=mountpoint, id="liq", name=nom,'."\n");
   elseif ($format_output == "ogg")
-    fwrite($fp, 'output.icecast.vorbis(mount=mountpoint, id="liq", name=nom, quality=5.,'."\n");
+    fwrite($fp, 'output.icecast(%vorbis(quality=0.5), mount=mountpoint, id="liq", name=nom,'."\n");
   else
-    fwrite($fp, 'output.icecast.mp3(mount=mountpoint, id="liq", name=nom, bitrate=bitrate,'."\n");
+    fwrite($fp, 'output.icecast(%mp3(bitrate=160),mount=mountpoint, id="liq", name=nom,'."\n");
   fwrite($fp, '                host=host, port=port, user=user, password=password, description=desc, genre=genre, url=url,'."\n");
   fwrite($fp, '                radio)'."\n");
   fwrite($fp, "\n");
@@ -95,4 +181,5 @@ function generateConf($filename,
 
   fclose($fp);
 }
+
 ?>
