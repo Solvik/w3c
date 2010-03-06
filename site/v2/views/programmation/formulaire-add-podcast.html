@@ -31,6 +31,7 @@ Veuillez remplir les champs suivants :</p>
 			<select name="action">
 				<?php 
 $podcasts = getPodcasts($compte);
+var_dump($podcasts);
 foreach ($podcasts as $podcast)
 {
 	echo '<option value="'.$podcast['id'].'">'.$podcast['titre'].'</option>';
