@@ -80,5 +80,5 @@ function getPodcastName ($musiqueId, Member $compte)
 {
 	@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 	
-	return $pdo->query('SELECT titre FROM musiques WHERE id = '.intval($musiqueId))->fetchColumn();
+	return $pdo->query('SELECT titre FROM musique WHERE id = '.intval($musiqueId))->fetchColumn();
 }
