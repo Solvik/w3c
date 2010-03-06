@@ -56,7 +56,7 @@ function getMusicInfos ($musiqueId, Member $compte, Stream $stream)
  */
 function getPodcasts (Member $compte)
 {
-	@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+	$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 	$podcasts = array();
 	$query = 'SELECT * FROM `musique` WHERE `path` LIKE \'%/podcast\' ORDER BY `filename` ASC';
 	$i = 0;
