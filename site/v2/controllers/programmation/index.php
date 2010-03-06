@@ -2,6 +2,9 @@
 if(!is_online()) { include NON_CONNECTE; exit(); }
 
 $compte = new Member(Member::EXISTANT, $_SESSION['login']);
+
+include MODEL.'Musiques.php';
+
 if(!$compte->getStream()->hasStream())
 {
 	include 'views/stream/pas_de_stream.html';
