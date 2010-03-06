@@ -4,6 +4,8 @@ if(!is_online()) { include NON_CONNECTE; exit(); }
 $compte = new Member(Member::EXISTANT, $_SESSION['login']);
 $id = intval($_GET['id']);
 
+include MODEL.'Musiques.php';
+
 if(isset($_POST['edit']))
 {
 	$event = new Event ($id, $compte);

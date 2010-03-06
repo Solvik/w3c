@@ -3,6 +3,8 @@ if(!is_online()) { include NON_CONNECTE; exit(); }
 
 $compte = new Member(Member::EXISTANT, $_SESSION['login']);
 $jour = intval($_GET['jour']);
+
+include MODEL.'Musiques.php';
 	
 if(isset($_POST['etape2']))
 {
