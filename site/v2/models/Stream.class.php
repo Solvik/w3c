@@ -49,18 +49,20 @@ class Stream
 		if(class_exists('Offre')) $this->offre			= @new Offre($infos->offerId);
 		$this->clientId			= $infos->clientId;
 		$this->status			= $infos->status;
-		$this->nom				= $infos->nom;
+		$this->nom			= $infos->nom;
 		$this->description		= $infos->description;
 		$this->genre			= $infos->genre;
 		$this->mountpoint		= $infos->mountpoint;
-		$this->url				= $infos->url;
+		$this->url			= $infos->url;
 		$this->password			= $infos->password;
-		$this->port				= $infos->port;
+		$this->port			= $infos->port;
 		$this->dateDebut		= $infos->dateDebut;
 		$this->dateFin			= $infos->dateFin;
 		$this->ip_serveur		= $infos->ip_serveur;
 		$this->format_live		= $infos->format_live;
-		$this->format_output	= $infos->format_output;
+		$this->format_output		= $infos->format_output;
+		$this->nb_jingles		= $infos->nb_jingles;
+		$this->start_before		= $infos->start_before;
 		return true;
 	}
 	
