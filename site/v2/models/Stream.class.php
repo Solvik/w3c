@@ -202,7 +202,7 @@ class Stream
 								ip_serveur = :ip_serveur,
 								format_live = :format_live,
 								format_output = :format_output,
-								nb_jinles = :nb_jingles,
+								nb_jingles = :nb_jingles,
 								start_before = :start_before
 								WHERE id = :id");
 			$requete->bindValue(':id', 				$this->id);
