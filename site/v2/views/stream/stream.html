@@ -56,6 +56,15 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
     <td align="right">Port</td>
     <td colspan="2"><?php echo $stream->port; ?></td>
   </tr>
+  <tr>
+    <td align="right">Jingles toutes les x musiques ?</td>
+    <td colspan="2"><input type="text" name="nb_jingles" value="<?php echo $stream->nb_jingles; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Start Before</td>
+    <td colspan="2"><input type="text" name="start_before" value="<?php echo $stream->start_before; ?>" /><br />
+    <small>La chanson commence avant "Start Before" secondes avant la fin du jingle.</small></td>
+  </tr>
 <br />
 <br />
   <tr>

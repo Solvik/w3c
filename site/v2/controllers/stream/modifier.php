@@ -33,6 +33,8 @@ else
 							$stream->format_output    = $_POST['format_output'];
 						else $stream->format_output   = 'mp3';
 						$stream->status = 'change_password';
+						$stream->nb_jingles = intval($_POST['nb_jingles']);
+						$stream->start_before = intval($_POST['start_before']);
 						$stream->save();
 						
 						//echo '<p style="text-align: center;color: green;"><strong>Les modifications ont &eacute;t&eacute; effectu&eacute;es.</strong></p>';

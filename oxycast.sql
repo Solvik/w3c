@@ -120,6 +120,8 @@ CREATE TABLE IF NOT EXISTS `streams` (
   `ip_serveur` varchar(50) NOT NULL,
   `format_live` varchar(3) NOT NULL,
   `format_output` varchar(3) NOT NULL,
+  `nb_jingle` smallint(6) NOT NULL default '10',
+  `start_before` smallint(6) NOT NULL default '3',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 

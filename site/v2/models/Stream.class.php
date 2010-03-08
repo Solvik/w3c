@@ -25,6 +25,8 @@ class Stream
 	protected $ip_serveur;
 	protected $format_live;
 	protected $format_output;
+	protected $nb_jingles;
+	protected $start_before;
 	
 	/**
 	 * @desc Constructeur
@@ -83,21 +85,23 @@ class Stream
 		
 		$id = $pdo->query('SELECT id FROM streams ORDER BY id DESC')->fetchColumn();
 		
-		$this->id 				= (int) $id + 1;
+		$this->id 			= (int) $id + 1;
 		$this->offerId			= (int) $offerId;
 		$this->offre			= @new Offre($offerId);
 		$this->clientId			= (int) $clientId;
 		$this->status			= $status;
-		$this->nom				= $nom;
+		$this->nom			= $nom;
 		$this->description		= $description;
 		$this->genre			= $genre;
 		$this->mountpoint		= $mountpoint;
-		$this->url				= $url;
+		$this->url			= $url;
 		$this->password			= $password;
-		$this->port				= 9000 + $this->id;
+		$this->port			= 9000 + $this->id;
 		$this->ip_serveur		= '88.191.114.8';
 		$this->format_live		= 'mp3';
-		$this->format_output	= 'mp3';
+		$this->format_output		= 'mp3';
+		$this->nb_jingles		= 10;
+		$this->start_before		= 3;
 		
 		
 		
@@ -115,7 +119,9 @@ class Stream
 								port = :port,
 								ip_serveur = :ip_serveur,
 								format_live = :format_live,
-								format_output = :format_output");
+								format_output = :format_output,
+								nb_jingles = :nb_jingles,
+								start_before = :start_before");
 		$requete->bindValue(':id', 				$this->id);
 		$requete->bindValue(':offerId', 		$this->offerId);
 		$requete->bindValue(':clientId', 		$this->clientId);
@@ -130,7 +136,9 @@ class Stream
 		$requete->bindValue(':ip_serveur', 		$this->ip_serveur);
 		$requete->bindValue(':format_live', 	$this->format_live);
 		$requete->bindValue(':format_output', 	$this->format_output);
-
+		$requete->bindValue(':nb_jingles', 	$this->nb_jingles);
+		$requete->bindValue(':start_before', 	$this->start_before);
+				
 		$requete->execute();
 	}
 	
@@ -193,7 +201,9 @@ class Stream
 								dateFin = :dateFin,
 								ip_serveur = :ip_serveur,
 								format_live = :format_live,
-								format_output = :format_output
+								format_output = :format_output,
+								nb_jinles = :nb_jingles,
+								start_before = :start_before
 								WHERE id = :id");
 			$requete->bindValue(':id', 				$this->id);
 			$requete->bindValue(':offerId', 		$this->offerId);
@@ -211,6 +221,8 @@ class Stream
 			$requete->bindValue(':ip_serveur', 		$this->ip_serveur);
 			$requete->bindValue(':format_live', 	$this->format_live);
 			$requete->bindValue(':format_output', 	$this->format_output);
+			$requete->bindValue(':nb_jingles', 	$this->nb_jingles);
+			$requete->bindValue(':start_before', 	$this->start_before);
 
 			$requete->execute();
 	}
