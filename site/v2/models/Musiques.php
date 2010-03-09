@@ -64,7 +64,8 @@ function getPodcasts (Member $compte)
 	foreach($pdo->query($query) as $podcast)
 	{
 		$podcasts[$i] = array('id'		=>		$podcast['id'],
-							  'titre' 	=>		utf8_encode($podcast['titre']));
+				      'titre' 	=>		utf8_encode($podcast['titre']),
+				      'filename' => utf8_encode($podcast['filename']));
 		$i++;
 	}
 	return $podcasts;

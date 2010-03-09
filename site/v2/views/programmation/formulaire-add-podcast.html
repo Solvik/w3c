@@ -33,7 +33,7 @@ Veuillez remplir les champs suivants :</p>
 $podcasts = getPodcasts($compte);
 foreach ($podcasts as $podcast)
 {
-	echo '<option value="'.$podcast['id'].'">'.$podcast['titre'].'</option>';
+	echo '<option value="'.$podcast['id'].'">'.$podcast['filename'].'</option>';
 } 
 ?>			</select>
 		</td>
