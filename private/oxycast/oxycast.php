@@ -14,9 +14,9 @@ function checkLastZik()
 
 
 $time = time();
-$jour = date("w") + 1;
-$selectSearchAction = 'SELECT * FROM `planification` WHERE (`jour` = "'.$jour.'") AND (`heure_debut` >= "'.date("G").'" AND `heure_debut` = `heure_fin` AND `minute_fin` >= "'.intval(date("i")).'") OR
-(`heure_debut` <= "'.date("G").'" AND (`heure_fin` > "'.date("G").'" OR (`heure_fin`= "'.date("G").'" AND `minute_fin` >= "'.intval(date("i")).'")));';
+$jour = date("N");
+$selectSearchAction = 'SELECT * FROM `planification` WHERE (`jour` = "'.$jour.'") AND ((`heure_debut` >= "'.date("G").'" AND `heure_debut` = `heure_fin` AND `minute_fin` >= "'.intval(date("i")).'") OR
+(`heure_debut` <= "'.date("G").'" AND (`heure_fin` > "'.date("G").'" OR (`heure_fin`= "'.date("G").'" AND `minute_fin` >= "'.intval(date("i")).'"))));';
 $resultSearchAction = mysql_query($selectSearchAction);
 
 if (mysql_num_rows($resultSearchAction) == 1)
