@@ -51,7 +51,7 @@ function tab_icecast($host, $port)
 }
 
 
-$tabIceCast = tab_icecast('www.oxycast.net', 8000);
+$tabIceCast = tab_icecast('localhost', 8000);
 
 if ($tabIceCast)
 {

@@ -6,7 +6,7 @@ function write_log($string)
   /*
    ** On set le nom du fichier de log
    */
-  $log_file = "mainlog.log";
+  $log_file = "/home/oxycast/private/moulinette/mainlog.log";
  
   /*
    ** on ouvre, on ecrit on ferme

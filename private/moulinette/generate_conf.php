@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 /*
  ** Generation des fichiers de configuration liquidsoap
@@ -10,14 +10,14 @@
 function generateConf($filename,
 		      $login, $idStream, $port, $password,
 		      $format_live, $format_output,
-		      $description, $url, $genre, $nom, $bitrate, $mountpoint)
+		      $description, $url, $genre, $nom, $bitrate, $mountpoint, $nb_jingles, $start_before)
 {
   $fp = fopen($filename, 'w');
   fwrite($fp, '%include "/home/oxycast/liquidsoap/utils.liq'."\"\n\n");
   fwrite($fp, "# On define les trucs de bases\n");
   fwrite($fp, 'racine = "/home/oxycast/streams/'.$login.'-'.$idStream.'/"'."\n");
   fwrite($fp, 'set("log.file.path",racine ^"logs/logfile.log")'."\n");
-  fwrite($fp, 'set("log.level",5)'."\n\n");
+  fwrite($fp, 'set("log.level",3)'."\n\n");
 
   /*
    ** Config Harbor
@@ -75,7 +75,7 @@ def jingle_fade (~start_next=5.,~fade_in=5.,~fade_out=5.,
   fade.in = fade.in(duration=fade_in)
 
   # Une queue pour les jingles
-  jingles_queue = request.queue()
+  jingles_queue = request.queue(id="jingles_queue")
 
   # Une reference sur une string representant un int
   x = ref 0
@@ -143,11 +143,12 @@ end'."\n\n");
   fwrite($fp, 'end'."\n\n");
   
   fwrite($fp, 'jingles = fun () -> list.hd(get_process_lines("find "^jingles_folder^" -name \'*.mp3\' -or -name \'*.ogg\' | sort -R | head -1"))'."\n");
+//   fwrite($fp, 'jingles = fun () -> get_process_output("find "^jingles_folder^" -name \'*.mp3\' -or -name \'*.ogg\' | sort -R | head -1")'."\n");
   fwrite($fp, 'pls = request.dynamic(id="scheduler",'."\n");
   fwrite($fp, '    fun () ->'."\n");
   fwrite($fp, '      request.create(list.hd(get_process_lines("php /home/oxycast/streams/'.$login.'-'.$idStream.'/oxycast.php"))))'."\n");
   fwrite($fp, 'pls = skip_blank(threshold=-35.,length=7.,pls)'."\n");
-  fwrite($fp, 'pls = if jingles() != "" then jingle_fade(jingles=jingles, period=0, start_before=4., pls) else pls end'."\n");
+  fwrite($fp, 'pls = if jingles() != "" then jingle_fade(jingles=jingles, period='.$nb_jingles.', start_before='.$start_before.'., pls) else pls end'."\n");
   fwrite($fp, 'radio = if jingles() != "" then
   jingles_playlist = playlist.safe(reload=3600, jingles_folder)
   mksafe(fallback(track_sensitive = false, transitions=[trans(jingles_playlist), trans(jingles_playlist)], [emi, pls]))

@@ -75,6 +75,7 @@ function Explore($dir)
 
 
 Explore(PATH."public/playlist");
+Explore(PATH."public/podcast");
 
 
 $suppr = array_diff($in, $out);
