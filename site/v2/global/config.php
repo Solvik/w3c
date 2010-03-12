@@ -1,9 +1,10 @@
 <?php
 
 // Identifiants pour la base de données. Nécessaires a PDO2.
-define('SQL_DSN',      'mysql:dbname=w3c_dev;host=localhost');
-define('SQL_USERNAME', 'w3c');
-define('SQL_PASSWORD', '');
+define('SQL_DSN',      'mysql:dbname=oxycast;host=localhost');
+define('SQL_USERNAME', 'oxycast');
+define('SQL_PASSWORD', 'ene4UzAADHQ8Juxm');
+
 
 // Chemins à utiliser pour accéder aux vues/modeles/librairies
 $module = empty($module) ? !empty($_GET['module']) ? $_GET['module'] : 'index' : $module;

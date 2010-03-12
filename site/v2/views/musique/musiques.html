@@ -5,9 +5,11 @@
 <p></p>
 <table class="table music_list">
 <tr>
-	<th>Artiste</th>
-	<th>Titre</th>
-	<th>R&eacute;pertoire</th>
+	<th>Artiste <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
+	<th>Titre <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
+	<th>R&eacute;pertoire <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
+	<th>Fade-in</th>
+	<th>Fade-out</th>
 </tr>
 <?php foreach($musiques as $musique): ?>
 	<tr>
@@ -16,6 +18,8 @@
 		<td><?php 
 		$toDelete = "/home/oxycast/";
 		echo str_replace($toDelete, "", $musique['chemin']); ?></td>
+		<td>.</td>
+		<td>.</td>
 	</tr>
 <?php endforeach; ?>
 </table></div>
