@@ -36,3 +36,9 @@ USER - 26/09/2009 - 15:43:22 : Unknown column 'pass' in 'where clause'
 #3  include(I:\OxyRadio\site\v2\views\paiement\paypal.html) called at [I:\OxyRadio\site\v2\controllers\paiement\index.php:25]
 #4  include(I:\OxyRadio\site\v2\controllers\paiement\index.php) called at [I:\OxyRadio\site\v2\index.php:29]
 
+ - 12/03/2010 - 19:10:09 : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"titre" asc' at line 1
+#0  UserDS->__call(query, Array ([0] => SELECT * FROM `musique` ORDER BY `musique`."titre" asc))
+#1  UserDS->query(SELECT * FROM `musique` ORDER BY `musique`."titre" asc) called at [/home/oxycast/w3c/site/v2/models/Musiques.php:25]
+#2  getMusicList(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => 95000,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 0,[] => ,[] => ,[] => solvik), Stream Object ([] => 1,[] => 1,[] => Offre Object ([] => 1,[] => 160,[] => 50,[] => 14.00,[] => 0),[] => 24,[] => en cours,[] => Test,[] => Mon flux personnel,[] => Rock,[] => test,[] => http://www.oxycast.net,[] => motdepasse,[] => 9001,[] => 2010-02-26 00:00:00,[] => 2011-02-26 00:00:00,[] => 88.191.250.170,[] => mp3,[] => mp3,[] => 3,[] => 2), titre, asc) called at [/home/oxycast/w3c/site/v2/controllers/musique/index.php:26]
+#3  include(/home/oxycast/w3c/site/v2/controllers/musique/index.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+

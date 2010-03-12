@@ -5,11 +5,12 @@
 <p></p>
 <table class="table music_list">
 <tr>
-	<th>Artiste <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
-	<th>Titre <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
-	<th>R&eacute;pertoire <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>Artiste <a href="musique-order-by-artiste-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16" /></a><a href="musique-order-by-artiste-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>Titre <a href="musique-order-by-titre-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href="musique-order-by-titre-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>R&eacute;pertoire <a href="musique-order-by-filename-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href="musique-order-by-filename-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
 	<th>Fade-in</th>
 	<th>Fade-out</th>
+	<th>Action</th>
 </tr>
 <?php foreach($musiques as $musique): ?>
 	<tr>
@@ -20,6 +21,7 @@
 		echo str_replace($toDelete, "", $musique['chemin']); ?></td>
 		<td><?php echo $musique['fade_in']; ?></td>
 		<td><?php echo $musique['fade_out']; ?></td>
+		<td><a href=""><img src="images/edit.png" alt="" /></a></td>
 	</tr>
 <?php endforeach; ?>
 </table></div>
