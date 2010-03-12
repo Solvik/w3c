@@ -12,11 +12,11 @@
    * @param $stream Stream L'instance du Stream
    * @return array
    */
-function getMusicList(Member $compte, Stream $stream, $orderBy, $sens)
+function getMusicList(Member $compte, Stream $stream, $orderBy = 'id' , $sens = 'ASC')
 {
   @$pdo = UserDS::getInstance($compte->login."_".$stream->id);
 
-  $query = 'SELECT * FROM `musique` ORDER BY "'.$orderBy.'" "'.$sens.'"';
+  $query = 'SELECT * FROM `musique` ORDER BY '.$orderBy.' '.$sens;
   $musiques = array();
   $toDelete = "streams/".$compte->login."-".$stream->id."/";
   $i = 0;
