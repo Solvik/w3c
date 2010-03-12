@@ -5,9 +5,9 @@
 <table class="table music_list">
 <tr>
 	<th>#</th>
-	<th>Artiste</th>
-	<th>Titre</th>
-	<th>R&eacute;pertoire</th>
+	<th>Artiste <a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-artiste-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16" /></a><a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-artiste-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>Titre <a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-titre-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-titre-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>R&eacute;pertoire <a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-filename-asc"><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href="playlists-musique-add-<?php echo $playlistId; ?>-order-by-filename-desc"><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
 </tr>
 <form action="playlists-musique-add-<?php echo $playlistId; ?>" method="post">
 <?php foreach($musiques as $musique): ?>
