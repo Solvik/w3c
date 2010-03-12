@@ -1,13 +1,13 @@
 <div class="boxtitle">Ma musique</div>
 <div class="content_content">
-<p>Mettre a jour sa musique en cliquant <a href="musique-update">ici</a>.</p>
+<div align="center"><a href="musique-update" class="button"><span class="add">Mettre &agrave; jour</span></a></div>
 <?php if(!empty($info)) echo '<p style="color: green;">'.$info.'</p>' ?>
 <p></p>
 <table class="table music_list">
 <tr>
-	<th>Artiste <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
-	<th>Titre <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
-	<th>R&eacute;pertoire <a href=""><img src="images/icons/arrow_down.png" alt="" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" /></a></th>
+	<th>Artiste <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16" /></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>Titre <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
+	<th>R&eacute;pertoire <a href=""><img src="images/icons/arrow_down.png" alt="" height="13" width="16"/></a><a href=""><img src="images/icons/arrow_up.png" alt="" height="13" width="16"/></a></th>
 	<th>Fade-in</th>
 	<th>Fade-out</th>
 </tr>
@@ -18,8 +18,8 @@
 		<td><?php 
 		$toDelete = "/home/oxycast/";
 		echo str_replace($toDelete, "", $musique['chemin']); ?></td>
-		<td>.</td>
-		<td>.</td>
+		<td><?php echo $musique['fade_in']; ?></td>
+		<td><?php echo $musique['fade_out']; ?></td>
 	</tr>
 <?php endforeach; ?>
 </table></div>
