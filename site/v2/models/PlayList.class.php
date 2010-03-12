@@ -43,7 +43,7 @@ class PlayList
 		
 		} else {
 			$requete = $pdo->query('SELECT nom FROM playlist WHERE id = \'' . $playlistId . '\'')->fetchColumn();
-			$this->nom = $nom;
+			$this->nom = $requete;
 			
 			$query = 'SELECT * FROM musique_playlist WHERE id_playlist = ' . intval($playlistId);
 			$this->playlistId = intval($playlistId);
