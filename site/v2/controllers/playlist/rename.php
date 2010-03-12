@@ -19,6 +19,7 @@ if (!empty($_POST['nom'])) // Si le formulaire a été envoyé
   }
 else
   {
+	$playlistId = intval($_GET['playlist']);
 	$playlist = new PlayList($playlistId, $compte, $stream);
     $erreur = ' ';
     include VIEW.'rename-playlist.html';
