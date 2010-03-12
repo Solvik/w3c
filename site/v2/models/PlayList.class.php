@@ -158,6 +158,7 @@ class PlayList
 		@$pdo = UserDS::getInstance($this->compte->login."_".$this->stream->id);
 		
 		$pdo->query('DELETE FROM musique_playlist WHERE id_playlist = ' . intval($this->playlistId));
+		$pdo->query('DELETE FROM planification WHERE action = ' . intval($this->playlistId));
 		$pdo->query('DELETE FROM playlist WHERE id = ' . intval($this->playlistId));
 		$this->playlistId = null;
 	}
