@@ -16,5 +16,9 @@ if (!empty($_GET['playlist'])) // Si le formulaire a été envoyé
 	$playlist->save();
 	include VIEW.'rename-playlist-ok.html';
       }
-	
+  }
+else
+  {
+    $erreur = ' ';
+    include VIEW.'rename-playlist-.html';
   }

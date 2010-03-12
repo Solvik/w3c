@@ -1,7 +1,6 @@
 # Rewriting
 Options +FollowSymlinks
 RewriteEngine on
-RewriteBase /oxycast
 
 RewriteRule ^$ index.php
 RewriteRule ^index$ index.php [L]
