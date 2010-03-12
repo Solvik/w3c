@@ -8,6 +8,7 @@
 
 class PlayList
 {
+	protected $nom;
 	protected $playlistId;
 	protected $musiques = array();
 	protected $compte;
@@ -35,10 +36,15 @@ class PlayList
 			$requete->bindValue(':nom', $playlistName);
 			$requete->execute();
 			
+			$this->nom = $playlistName;
+			
 			$requete = $pdo->query('SELECT id FROM playlist WHERE nom = \'' . $playlistName . '\'')->fetchColumn();
 			$this->playlistId = $requete;
 		
 		} else {
+			$requete = $pdo->query('SELECT nom FROM playlist WHERE id = \'' . $playlistId . '\'')->fetchColumn();
+			$this->nom = $nom;
+			
 			$query = 'SELECT * FROM musique_playlist WHERE id_playlist = ' . intval($playlistId);
 			$this->playlistId = intval($playlistId);
 			
@@ -187,6 +193,11 @@ class PlayList
 	public function save ()
 	{
 		@$pdo = UserDS::getInstance($this->compte->login."_".$this->stream->id);
+		
+		$requete = $pdo->prepare("UPDATE playlist SET nom = :nom WHERE id = :id");
+		$requete->bindValue(':nom', $this->nom);
+		$requete->bindValue(':id', $this->playlistId);
+		$requete->execute();
 		
 		$pdo->query("DELETE FROM musique_playlist WHERE id_playlist = $this->playlistId");
 		
