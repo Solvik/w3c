@@ -12,7 +12,7 @@ if (!empty($_POST['nom'])) // Si le formulaire a été envoyé
 	
     if(PlayList::belongs($playlist, $compte))
       {
-	$playlist->nom = $_POST['name'];
+	$playlist->nom = $_POST['nom'];
 	$playlist->save();
 	include VIEW.'rename-playlist-ok.html';
       }
