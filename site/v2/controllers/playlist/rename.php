@@ -20,5 +20,5 @@ if (!empty($_POST['nom'])) // Si le formulaire a été envoyé
 else
   {
     $erreur = ' ';
-    include VIEW.'rename-playlist-.html';
+    include VIEW.'rename-playlist.html';
   }
