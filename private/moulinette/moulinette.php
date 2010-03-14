@@ -70,6 +70,9 @@ function activeProgStreams()
   `path` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
   `dernier_passage` int(11) default '0',
   `passage` int(11) NOT NULL default '0',
+  `fade_in` FLOAT NOT NULL DEFAULT  '0',
+  `fade_out` FLOAT NOT NULL DEFAULT  '0',
+  `duree` int(11) NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
 	  $doCreateTables1 = mysql_query($createTables1);
@@ -120,7 +123,8 @@ function activeProgStreams()
 	  generateConf($directory.'streams/'.$infosClient->login.'-'.$listeStreamsToCreate->id.'/liquid_'.$listeStreamsToCreate->id.'.liq',
 		       $infosClient->login, $listeStreamsToCreate->id, $listeStreamsToCreate->port, $listeStreamsToCreate->password,
 		       $listeStreamsToCreate->format_live, $listeStreamsToCreate->format_output,
-		       $listeStreamsToCreate->description, $listeStreamsToCreate->url, $listeStreamsToCreate->genre, $listeStreamsToCreate->nom, $infosOffer->bitrate, $listeStreamsToCreate->mountpoint, $listeStreamsToCreate->nb_jingles, $listeStreamsToCreate->start_before);
+		       $listeStreamsToCreate->description, $listeStreamsToCreate->url, $listeStreamsToCreate->genre, $listeStreamsToCreate->nom, $infosOffer->bitrate, $listeStreamsToCreate->mountpoint, $listeStreamsToCreate->nb_jingles, $listeStreamsToCreate->start_before,
+		       $listeStreamsToCreate->skip_blank_sec, $listeStreamsToCreate->skip_blank_db, $listeStreamsToCreate->skip_blank_mail);
 
 	  // on cree la conf php pour les playlist
 	  $configFile = $directory."streams/".$infosClient->login.'-'.$listeStreamsToCreate->id."/conf.php";
@@ -440,7 +444,8 @@ function updateConfig()
 	  generateConf($directory.'streams/'.$infosClient->login.'-'.$listeStreamsToUpdate->id.'/liquid_'.$listeStreamsToUpdate->id.'.liq',
 		       $infosClient->login, $listeStreamsToUpdate->id, $listeStreamsToUpdate->port, $listeStreamsToUpdate->password,
 		       $listeStreamsToUpdate->format_live, $listeStreamsToUpdate->format_output,
-		       $listeStreamsToUpdate->description, $listeStreamsToUpdate->url, $listeStreamsToUpdate->genre, $listeStreamsToUpdate->nom, $infosOffer->bitrate, $listeStreamsToUpdate->mountpoint, $listeStreamsToUpdate->nb_jingles, $listeStreamsToUpdate->start_before);
+		       $listeStreamsToUpdate->description, $listeStreamsToUpdate->url, $listeStreamsToUpdate->genre, $listeStreamsToUpdate->nom, $infosOffer->bitrate, $listeStreamsToUpdate->mountpoint, $listeStreamsToUpdate->nb_jingles, $listeStreamsToUpdate->start_before,
+		       $listeStreamsToUpdate->skip_blank_sec, $listeStreamsToUpdate->skip_blank_db, $listeStreamsToUpdate->skip_blank_mail);
 	
 	  // on kill le flux  
 	  $pid = exec ('/usr/bin/pgrep -of '.$infosClient->login.'-'.$infosClient->id.'-'.$listeStreamsToUpdate->id.'');

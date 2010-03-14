@@ -1,10 +1,10 @@
-AuthUserFile /var/subversion/depot/w3c/site/.htpasswd
-AuthGroupFile /dev/null
-AuthName "Secret Section"
-AuthType Basic
-<Limit GET POST>
-require valid-user
-</Limit>
+#AuthUserFile /var/subversion/depot/w3c/site/.htpasswd
+#AuthGroupFile /dev/null
+#AuthName "Secret Section"
+#AuthType Basic
+#<Limit GET POST>
+#require valid-user
+#</Limit>
 
 
 # Rewriting

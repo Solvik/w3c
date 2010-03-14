@@ -56,8 +56,8 @@ function Explore($dir)
 			  getid3_lib::CopyTagsToComments($ThisFileInfo);
 			  if ($ThisFileInfo["tags_html"]["id3v1"]["title"][0] != "" && $ThisFileInfo["tags_html"]["id3v1"]["artist"][0] != "") 
 			    {
-			      $sql = 'UPDATE musique SET titre = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["title"][0]).'", artiste = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["artist"][0]).'" WHERE path = "'.$dir.'" AND filename = "'.$file.'" LIMIT 1';
-			      echo $sql."\n\n\n\n";
+			      $sql = 'UPDATE musique SET titre = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["title"][0]).'", artiste = "'.html_entity_decode($ThisFileInfo["tags_html"]["id3v1"]["artist"][0]).'", duree = "'.$ThisFileInfo["playtime_seconds"].'" WHERE 
+path = "'.$dir.'" AND filename = "'.$file.'" LIMIT 1';
 			      mysql_query($sql);
 			    }
 			} 
