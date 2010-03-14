@@ -65,6 +65,17 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
     <td colspan="2"><input type="text" name="start_before" value="<?php echo $stream->start_before; ?>" /><br />
     <small>La chanson commence avant "Start Before" secondes avant la fin du jingle.</small></td>
   </tr>
+  <tr>
+    <td align="right">Detection de blanc</td>
+    <td colspan="2">
+<input type="text" name="skip_blank_sec" value="<?php echo $stream->skip_blank_sec; ?>" />
+<small>Nombre de secondes.</small><br />
+<input type="text" name="skip_blank_db" value="<?php echo $stream->skip_blank_db; ?>" />
+<small>Valeur en decibels.</small><br />
+<input type="text" name="skip_blank_mail" value="<?php echo $stream->skip_blank_mail; ?>" />
+<small>Possibilit&eacute; d'indiquer un mail pour &ecirc;tre averti.</small><br />
+<td>
+  </tr>
 <br />
 <br />
   <tr>
@@ -76,7 +87,14 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
 </div>
 
 <p><u>Mon flux</u></br />
-<div align="center">Votre flux est disponible &agrave; l'adresse:<br /><input type="text" name="nom" size="40" value="http://www.oxycast.net:8000/<?php echo $stream->mountpoint; ?>.mp3" /></div>
+<div align="center">
+Votre flux est disponible &agrave; l'adresse:<br />
+<?php
+$streamUrl = "http://www.oxycast.net:8000/".$stream->mountpoint.".".$stream->format_output;
+$sizeStreamUrl = strlen($streamUrl);
+echo '<input type="text" name="nom" size="'.$sizeStreamUrl.'" value="'.$streamUrl.'" />';
+?>
+</div>
 
 <?php endif; ?>
 </div>

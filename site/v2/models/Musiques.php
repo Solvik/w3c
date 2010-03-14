@@ -89,3 +89,36 @@ function getPodcastName ($musiqueId, Member $compte)
 	
   return $pdo->query('SELECT titre FROM musique WHERE id = '.intval($musiqueId))->fetchColumn();
 }
+
+/**
+ * @desc Retourne le fade-in d'une musique
+ * @param $musiqueId int l'ID de la musique
+ * @param $compte Member L'instance du compte
+ * @param $type string fade_in ou fade_out
+ * @return float
+ */
+
+function getFader ($type, $musiqueId, Member $compte)
+{
+  @$pdo = UserDS::getFaddingInfos($compte->login."_".$compte-getStream()->$id);
+
+  return $pdo->query('SELECT fade_in FROM musique WHERE id = '.intval($musiqueId))->fetchColumn();
+}
+
+/**
+ * @desc Modifie la valeur du fadein/fadeout
+ * @param $type fade in ou fade out
+ * @param $value
+ * @param $musiqueId int l'ID de la musique
+ * @param $compte Member L'instance du compte
+ * @return void
+ */
+
+function updateFader ($type, $value, $musiqueId, Member $compte)
+{
+  @$pdo = UserDS::getFaddingInfos($compte->login."_".$compte-getStream()->$id);
+
+  $requete = $pdo->query('UPDATE `musique` SET "'.$type.'" = "'.$value.'" WHERE id = '.intval($musiqueId));
+  $requete->execute();
+}
+

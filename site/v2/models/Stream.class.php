@@ -27,6 +27,9 @@ class Stream
 	protected $format_output;
 	protected $nb_jingles;
 	protected $start_before;
+	protected $skip_blank_sec;
+	protected $skip_blank_db;
+	protected $skip_blank_mail;
 	
 	/**
 	 * @desc Constructeur
@@ -63,6 +66,10 @@ class Stream
 		$this->format_output		= $infos->format_output;
 		$this->nb_jingles		= $infos->nb_jingles;
 		$this->start_before		= $infos->start_before;
+		$this->skip_blank_sec		= $infos->skip_blank_sec;
+		$this->skip_blank_db		= $infos->skip_blank_db;
+		$this->skip_blank_mail		= $infos->skip_blank_mail;
+		
 		return true;
 	}
 	
@@ -205,26 +212,32 @@ class Stream
 								format_live = :format_live,
 								format_output = :format_output,
 								nb_jingles = :nb_jingles,
-								start_before = :start_before
+								start_before = :start_before,
+								skip_blank_sec = :skip_blank_sec,
+								skip_blank_db = :skip_blank_db,
+								skip_blank_mail = :skip_blank_mail 
 								WHERE id = :id");
-			$requete->bindValue(':id', 				$this->id);
+			$requete->bindValue(':id', 			$this->id);
 			$requete->bindValue(':offerId', 		$this->offerId);
 			$requete->bindValue(':clientId', 		$this->clientId);
 			$requete->bindValue(':status', 			$this->status);
 			$requete->bindValue(':nom', 			$this->nom);
-			$requete->bindValue(':description', 	$this->description);
+			$requete->bindValue(':description',		$this->description);
 			$requete->bindValue(':genre', 			$this->genre);
 			$requete->bindValue(':mountpoint', 		$this->mountpoint);
-			$requete->bindValue(':url',				$this->url);
+			$requete->bindValue(':url',			$this->url);
 			$requete->bindValue(':password',		$this->password);
 			$requete->bindValue(':port', 			$this->port);
 			$requete->bindValue(':dateDebut', 		$this->dateDebut);
 			$requete->bindValue(':dateFin', 		$this->dateFin);
 			$requete->bindValue(':ip_serveur', 		$this->ip_serveur);
-			$requete->bindValue(':format_live', 	$this->format_live);
-			$requete->bindValue(':format_output', 	$this->format_output);
-			$requete->bindValue(':nb_jingles', 	$this->nb_jingles);
-			$requete->bindValue(':start_before', 	$this->start_before);
+			$requete->bindValue(':format_live',		$this->format_live);
+			$requete->bindValue(':format_output',		$this->format_output);
+			$requete->bindValue(':nb_jingles',		$this->nb_jingles);
+			$requete->bindValue(':start_before',		$this->start_before);
+			$requete->bindValue(':skip_blank_sec',		$this->skip_blank_sec);
+			$requete->bindValue(':skip_blank_db',		$this->skip_blank_db);
+			$requete->bindValue(':skip_blank_mail',		$this->skip_blank_mail);
 
 			$requete->execute();
 	}

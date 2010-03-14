@@ -35,6 +35,9 @@ else
 						$stream->status = 'change_password';
 						$stream->nb_jingles = intval($_POST['nb_jingles']);
 						$stream->start_before = intval($_POST['start_before']);
+						$stream->skip_blank_sec = intval($_POST['skip_blank_sec']);
+						$stream->skip_blank_db = intval($_POST['skip_blank_db']);
+						$stream->skip_blank_mail = trim($_POST['skip_blank_mail']);
 						$stream->save();
 						
 						//echo '<p style="text-align: center;color: green;"><strong>Les modifications ont &eacute;t&eacute; effectu&eacute;es.</strong></p>';
