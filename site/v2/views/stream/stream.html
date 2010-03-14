@@ -72,7 +72,7 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
 <small>Nombre de secondes.</small><br />
 <input type="text" name="skip_blank_db" value="<?php echo $stream->skip_blank_db; ?>" />
 <small>Valeur en decibels.</small><br />
-<input type="text" name="skip_blank_mail" value="<?php echo $stream->skip_blank_mail; ?>" />
+<input type="text" name="skip_blank_mail" value="<?php echo ($stream->skip_blank_mail) ? $stream->skip_blank_mail : ""; ?>" />
 <small>Possibilit&eacute; d'indiquer un mail pour &ecirc;tre averti.</small><br />
 <td>
   </tr>
