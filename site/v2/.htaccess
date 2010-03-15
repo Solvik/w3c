@@ -27,6 +27,7 @@ RewriteRule ^playlists-musique-add-([0-9]*)$ index.php?module=playlist&act=musiq
 RewriteRule ^playlists-musique-add-([0-9]*)-order-by-([a-z]*)-([a-z]*)$ index.php?module=playlist&act=musique-add&playlist=$1&order=$2&sens=$3 [L]
 RewriteRule ^playlists-musique-del-([0-9]*)-([0-9]*)$ index.php?module=playlist&act=musique-del&playlist=$1&music=$2 [L]
 RewriteRule ^musique$ index.php?module=musique [L]
+RewriteRule ^musique-edit-([0-9]*)$ index.php?module=musique&act=edit&id=$1 [L]
 RewriteRule ^musique-order-by-([a-z]*)-([a-z]*)$ index.php?module=musique&order=$1&sens=$2 [L]
 RewriteRule ^musique-update$ index.php?module=musique&update [L]
 RewriteRule ^programmation$ index.php?module=programmation [L]

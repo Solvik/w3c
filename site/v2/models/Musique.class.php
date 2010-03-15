@@ -60,7 +60,7 @@ class Musique
 	public static function generateChemin (Member $compte, $path, $filename)
 	{
 		$toDelete = "/home/oxycast/streams/".$compte->login."-".$compte->getStream()->id."/";
-		return str_replace($toDelete, "", $path).'/'.$filename)
+		return str_replace($toDelete, "", $path).'/'.$filename;
 		
 	}
 	

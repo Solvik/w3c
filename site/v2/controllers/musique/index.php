@@ -17,6 +17,7 @@ if($compte->getStream()->hasStream() === false) { include VIEW.'pas_de_stream.ht
 
    $orderBy = array('id', 'artiste', 'titre', 'filename');
    $sens = array('asc', 'desc');
+
    if (!empty($_GET['order']) AND in_array($_GET['order'], $orderBy))
      {
        if (!empty($_GET['sens']) AND in_array($_GET['sens'], $sens))
