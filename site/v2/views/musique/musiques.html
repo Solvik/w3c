@@ -16,9 +16,7 @@
 	<tr>
 		<td><?php echo $musique['artiste']; ?></td>
 		<td><?php echo $musique['titre']; ?></td>
-		<td><?php 
-		$toDelete = "/home/oxycast/";
-		echo str_replace($toDelete, "", $musique['chemin']); ?></td>
+		<td><?php echo $musique['chemin']; ?></td>
 		<td><?php echo $musique['fade_in']; ?></td>
 		<td><?php echo $musique['fade_out']; ?></td>
 		<td><a href=""><img src="images/edit.png" alt="" /></a></td>
