@@ -20,6 +20,7 @@ class Musique
 	protected $duree;
 	protected $fade_in;
 	protected $fade_out;
+	protected $compte;
 	
 	/**
 	 * @desc Contructeur
@@ -35,17 +36,19 @@ class Musique
 		
 		if($infos === false) return false;
 		
-		$this->id			= $infos->id;
+		$this->id				= $infos->id;
 		$this->titre			= $infos->titre;
 		$this->artiste			= $infos->artiste;
 		$this->filename			= $infos->filename;
-		$this->path			= $infos->path;
+		$this->path				= $infos->path;
 		$this->chemin			= self::generateChemin($compte, $this->path, $this->filename);
-		$this->dernier_passage		= $infos->dernier_passage;
+		$this->dernier_passage	= $infos->dernier_passage;
 		$this->passage			= $infos->passage;
 		$this->duree			= $infos->duree;
 		$this->fade_in			= $infos->fade_in;
 		$this->fade_out			= $infos->fade_out;
+		
+		$this->compte			= $compte;
 		
 		return true;
 	}
@@ -133,7 +136,7 @@ class Musique
 	 */
 	public function save ()
 	{
-		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+		@$pdo = UserDS::getInstance($this->compte->login."_".$this->compte->getStream()->id);
 		
 		$requete = $pdo->prepare("UPDATE musique SET
 						id = :id,
