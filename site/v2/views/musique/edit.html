@@ -5,31 +5,32 @@
 <table>
   <tr>
     <td>Artiste :</td>
-    <td><input type="text" name="artiste" value="<?php echo $musique['artiste']; ?>" /></td>
+    <td><input type="text" name="artiste" value="<?php echo $musique->artiste; ?>" size="30"/></td>
   </tr>
   <tr>
     <td>Titre</td>
-    <td><input type="text" name="titre" value="<?php echo $musique['titre']; ?>" /></td>
+    <td><input type="text" name="titre" value="<?php echo $musique->titre; ?>" size="30"/></td>
   </tr>
   <tr>
     <td>Dur&eacute;e</td>
-    <td><input type="text" disabled="disabled" name="titre" value="<?php echo $musique['duree']; ?>" /></td>
+    <td><input type="text" disabled="disabled" name="titre" value="<?php echo $musique->duree; ?>" size="4" /></td>
   </tr>
   <tr>
     <td>Chemin fichier</td>
-    <td><input type="text" disabled="disabled" name="titre" value="<?php echo $musique['chemin']; ?>" /></td>
+    <td><input type="text" disabled="disabled" name="titre" value="<?php echo $musique->chemin; ?>" size="<?php echo strlen($musique->chemin); ?>" /></td>
   </tr>
   <tr>
     <td>Fade-in :</td>
-    <td><input type="text" name="fade_in" value="<?php echo $musique['fade_in']; ?>" /></td>
+    <td><input type="text" name="fade_in" value="<?php echo $musique->fade_in; ?>" /></td>
   </tr>
   <tr>
     <td>Fade-out :</td>
-    <td><input type="text" name="fade_out" value="<?php echo $musique['fade_out']; ?>" /></td>
+    <td><input type="text" name="fade_out" value="<?php echo $musique->fade_out; ?>" /></td>
   </tr>
   <tr>
     <td></td>
-    <td><intput type="submit" name="edit" value="Modifier" /></td>
+    <td><input type="submit" name="edit" value="Modifier" /></td>
+  </tr>
 </table>
 </form>
 

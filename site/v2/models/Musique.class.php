@@ -40,7 +40,7 @@ class Musique
 		$this->artiste			= $infos->artiste;
 		$this->filename			= $infos->filename;
 		$this->path			= $infos->path;
-		$this->chemin			= generateChemin($compte, $this->path, $this->filename);
+		$this->chemin			= self::generateChemin($compte, $this->path, $this->filename);
 		$this->dernier_passage		= $infos->dernier_passage;
 		$this->passage			= $infos->passage;
 		$this->duree			= $infos->duree;
