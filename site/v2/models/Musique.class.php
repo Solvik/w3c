@@ -140,7 +140,7 @@ class Musique
 						titre = :titre,
 						artiste = :artiste,
 						filename = :filename,
-						path = path,
+						path = :path,
 						dernier_passage = :dernier_passage,
 						passage = :passage,
 						duree = :duree,
