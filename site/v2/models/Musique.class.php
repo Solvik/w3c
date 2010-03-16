@@ -147,6 +147,7 @@ class Musique
 						fade_in = :fade_in,
 						fade_out = :fade_out
 					WHERE id = :id");
+
 			$requete->bindValue(':id', 		$this->id);
 			$requete->bindValue(':titre', 		$this->titre);
 			$requete->bindValue(':artiste', 	$this->artiste);
