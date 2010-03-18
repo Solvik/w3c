@@ -159,7 +159,7 @@ class Stream
 	 */
 	public static function exist ($nom, $valeur, $uservalue = null)
 	{
-		return (int) SPDO::getInstance()->query('SELECT COUNT(*) AS count FROM streams WHERE '.$nom.' = \''.addslashes(trim($valeur)).'\' AND '.$nom.' != \''.addslashes(trim($uservalue)).'\'')
+		return (int) SPDO::getInstance()->query('SELECT COUNT(*) AS count FROM streams WHERE '.addslashes(trim($nom)).' = \''.addslashes(trim($valeur)).'\' AND '.$nom.' != \''.addslashes(trim($uservalue)).'\'')
 										->fetchColumn();
 	}
 	
