@@ -13,12 +13,12 @@ if (!empty($_POST['modifier'])) // Si le formulaire a été envoyé
 			{
 				
 				if(!empty($_POST['mdp']) AND $compte->hash != generate_hash($_POST['mdp'])) $compte->hash = generate_hash($_POST['mdp']);
-				$compte->mail 		= $_POST['mail'];
-				$compte->nom 		= $_POST['nom'];
-				$compte->prenom 	= $_POST['prenom'];
-				$compte->adresse 	= $_POST['adresse'];
-				$compte->cp 		= trim($_POST['cp']);
-				$compte->ville 		= $_POST['ville'];
+				$compte->mail 		= htmlspecialchars($_POST['mail']);
+				$compte->nom 		= htmlspecialchars($_POST['nom']);
+				$compte->prenom 	= htmlspecialchars($_POST['prenom']);
+				$compte->adresse 	= htmlspecialchars($_POST['adresse']);
+				$compte->cp 		= htmlspecialchars(trim($_POST['cp']));
+				$compte->ville 		= htmlspecialchars($_POST['ville']);
 				
 				$compte->save();
 				

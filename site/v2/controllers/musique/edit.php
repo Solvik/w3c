@@ -11,8 +11,8 @@ if (isset($_POST['edit']))
     $musique = new Musique($compte, $id);
     if ($musique)
       {
-	$musique->titre = $_POST['artiste'];
-	$musique->artiste = $_POST['titre'];
+	$musique->titre = htmlspecialchars($_POST['titre']);
+	$musique->artiste = htmlspecialchars($_POST['artiste']);
 	$musique->fade_in = floatval($_POST['fade_in']);
 	$musique->fade_out = floatval($_POST['fade_out']);
 

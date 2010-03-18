@@ -6,7 +6,7 @@ $stream = $compte->getStream();
 
 if (!empty($_POST['nom'])) // Si le formulaire a été envoyé
 {
-	$nom = addslashes($_POST['nom']);
+	$nom = htmlspecialchars(addslashes($_POST['nom']));
 	$playlist = new PlayList(PlayList::NOUVEAU, $compte, $stream, $nom);
 	include VIEW.'nouvelle-playlist-ok.html';
 } else {

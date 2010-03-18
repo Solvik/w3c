@@ -70,14 +70,14 @@ class Member
 		{
 			$pdo = SPDO::getInstance();
 			
-			$this->login 			= 	htmlentities(trim($login));
+			$this->login 			= 	htmlspecialchars(trim($login));
 			$this->hash			= 	generate_hash($password);
-			$this->nom			= 	utf8_decode($nom);
-			$this->prenom	 		= 	utf8_decode($prenom);
-			$this->mail		 	= 	$mail;
-			$this->adresse	 		= 	utf8_decode($adresse);
-			$this->cp		 	= 	$cp;
-			$this->ville	 		= 	utf8_decode($ville);
+			$this->nom			= 	htmlspecialchars(utf8_decode($nom));
+			$this->prenom	 		= 	htmlspecialchars(utf8_decode($prenom));
+			$this->mail		 	= 	htmlspecialchars($mail);
+			$this->adresse	 		= 	htmlspecialchars(utf8_decode($adresse));
+			$this->cp		 	= 	htmlspecialchars($cp);
+			$this->ville	 		= 	htmlspecialchars(utf8_decode($ville));
 			$this->ip 			= 	USERIP;
 			$this->dateInscription 		= 	time();
 			$this->dateUpdate 		= 	time();

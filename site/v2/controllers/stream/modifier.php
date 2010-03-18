@@ -20,12 +20,12 @@ else
 					{
 						//Enfin !
 						$stream = $compte->getStream();
-						$stream->nom			= trim($_POST['nom']);
-						$stream->mountpoint		= trim($_POST['mountpoint']);
-						$stream->password		= trim($_POST['password']);
-						$stream->description	= $_POST['description'];
-						$stream->genre			= $_POST['genre'];
-						$stream->url			= $_POST['url'];
+						$stream->nom			= htmlspecialchars(trim($_POST['nom']));
+						$stream->mountpoint		= htmlspecialchars(trim($_POST['mountpoint']));
+						$stream->password		= htmlspecialchars(trim($_POST['password']));
+						$stream->description	= htmlspecialchars($_POST['description']);
+						$stream->genre			= htmlspecialchars($_POST['genre']);
+						$stream->url			= htmlspecialchars($_POST['url']);
 						if($_POST['format_live'] == 'mp3' OR $_POST['format_live'] == 'ogg')
 							$stream->format_live    = $_POST['format_live'];
 						else $stream->format_live   = 'mp3';
