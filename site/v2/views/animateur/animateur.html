@@ -1,0 +1,79 @@
+<div class="boxtitle">Mon stream</div>
+<div class="content_content">
+
+<p><u>Cr&eacute;er un animateur</u></p>
+<form action="edit" method="post">
+<table>
+  <tr>
+    <td>Animateur:</td>
+    <td><input type="text" name="animateur" /></td>
+    <td>Mot de passe:</td>
+    <td><input type="text" name="animateur" /></td>
+  </tr>
+  <tr>
+    <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
+  </tr>
+</table>
+</form>
+
+<p><u>Liste des animateurs</u></p>
+
+<ul>
+<?php
+
+$toto = 1;
+echo '<li>toto <a href="del-anim-'.$toto.'"><img src="images/del.png" alt="" /></a></li>'
+
+?>
+</ul>
+<hr />
+
+<p><u>Assigner un cr&eacute;neau horaire &agrave; un animateur</u></p>
+<form action="edit" method="post">
+<table>
+	<tr>
+		<td>Animateur :</td>
+		<td>
+			<select name="animateur">
+<?php
+/* boucle
+$animateurs = getAnim();
+echo '<option value="wich_anim"></option>';
+*/
+?>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Jour :</td>
+		<td>
+		  <select name="jour">
+		    <?php 
+		       $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
+		    for ($i = 0; $i <= 7; $i++) echo '<option value="'.$i.'">'.$jour[$i].'</option>';
+				       ?>
+		      </select>
+		</td>
+	</tr>
+	<tr>
+		<td>Heure de d&eacute;but :</td>
+		<td>
+			<select name="hdebut"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mdebut"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td>Heure de fin :</td>
+		<td>
+			<select name="hfin"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mfin"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" name="add_horaire" value="Ajouter" /></td>
+	</tr>
+</table>
+
+</form>
+</div>

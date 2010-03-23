@@ -48,6 +48,7 @@ if (!is_online())
 		<ul>
 			<li><a href="infos">Mes infos perso</a></li>
 			<li><a href="stream">Mon stream</a></li>
+			<li><a href="animateur">Mes animateurs</a></li>
 			<li><a href="playlists">Mes playlists</a></li>
 			<li><a href="musique">Ma musique</a></li>
 			<li><a href="programmation">Programmation</a></li>

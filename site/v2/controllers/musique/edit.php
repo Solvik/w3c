@@ -15,6 +15,7 @@ if (isset($_POST['edit']))
 	$musique->artiste = htmlspecialchars($_POST['artiste']);
 	$musique->fade_in = floatval($_POST['fade_in']);
 	$musique->fade_out = floatval($_POST['fade_out']);
+	$musique->save();
 
 	include 'views/musique/edit-success.html';
       }
