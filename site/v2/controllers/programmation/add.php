@@ -7,21 +7,22 @@ $jour = intval($_GET['jour']);
 include MODEL.'Musiques.php';
 	
 if(isset($_POST['etape2']))
-{
-	if($jour >= 1 AND $jour <= 7)
-	{
-		if($_POST['type'] == 'podcast') $type = 'podcast';
-		else $type = 'playlist';
-		$hdebut = intval($_POST['hdebut']);
-		$mdebut = intval($_POST['mdebut']);
-		$hfin = intval($_POST['hfin']);
-		$mfin = intval($_POST['mfin']);
-		$action = intval($_POST['action']);
-		
-		Programmation::addEvent($compte, $type, $jour, $hdebut, $hfin, $mdebut, $mfin, $action);
-		include VIEW.'formulaire-add-success.html';
-	}
-}
+  {
+    if($jour >= 1 AND $jour <= 7)
+      {
+	if($_POST['type'] == 'podcast') $type = 'podcast';
+	else $type = 'playlist';
+	$hdebut = intval($_POST['hdebut']);
+	$mdebut = intval($_POST['mdebut']);
+	$hfin = intval($_POST['hfin']);
+	$mfin = intval($_POST['mfin']);
+	$action = intval($_POST['action']);
+	$heure_d			= nb_with_zeroo($hdebut).":".nb_with_zero($mdebut).":00";
+	$heure_f			= nb_with_zero($hfin).":".nb_with_zero($mfin).":00";
+	Programmation::addEvent($compte, $type, $jour, $hdebut, $hfin, $mdebut, $mfin, $action, $heure_d, $heure_f);
+	include VIEW.'formulaire-add-success.html';
+      }
+  }
 elseif (isset($_POST['etape1']))
 {
 	$hdebut = intval($_POST['hdebut']);

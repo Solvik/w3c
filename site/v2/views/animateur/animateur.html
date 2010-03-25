@@ -36,9 +36,11 @@ echo '<li>toto <a href="del-anim-'.$toto.'"><img src="images/del.png" alt="" /><
 		<td>
 			<select name="animateur">
 <?php
-/* boucle
+
+/*
 $animateurs = getAnim();
-echo '<option value="wich_anim"></option>';
+for ($i = 0; $animateurs[$i]; $i++)
+echo '<option value="wich_anim">"'.$animateurs['nom'].'"</option>';
 */
 ?>
 			</select>
