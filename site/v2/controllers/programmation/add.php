@@ -17,7 +17,7 @@ if(isset($_POST['etape2']))
 	$hfin = intval($_POST['hfin']);
 	$mfin = intval($_POST['mfin']);
 	$action = intval($_POST['action']);
-	$heure_d			= nb_with_zeroo($hdebut).":".nb_with_zero($mdebut).":00";
+	$heure_d			= nb_with_zero($hdebut).":".nb_with_zero($mdebut).":00";
 	$heure_f			= nb_with_zero($hfin).":".nb_with_zero($mfin).":00";
 	Programmation::addEvent($compte, $type, $jour, $hdebut, $hfin, $mdebut, $mfin, $action, $heure_d, $heure_f);
 	include VIEW.'formulaire-add-success.html';
