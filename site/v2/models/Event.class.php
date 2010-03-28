@@ -17,8 +17,8 @@ class Event
 	protected $minute_fin;
 	protected $action;
 	protected $compte;
-	protected $heure_d;
-	protected $heure_f;
+// 	protected $heure_d;
+// 	protected $heure_f;
 	
 	/**
 	 * @desc Constrcteur
@@ -41,8 +41,8 @@ class Event
 		$this->minute_debut	= $infos->minute_debut;
 		$this->minute_fin	= $infos->minute_fin;
 		$this->action		= $infos->action;
-		$this->heure_d		= $infos->heure_d;
-		$this->heure_f		= $infos->heure_f;
+// 		$this->heure_d		= $infos->heure_d;
+// 		$this->heure_f		= $infos->heure_f;
 	}
 	
 	/**
@@ -82,18 +82,14 @@ class Event
 								heure_fin = :hfin,
 								minute_debut = :mdebut,
 								minute_fin = :mfin,
-								action = :action,
-								heure_d = :heure_d,
-								heure_f = :heure_f
+								action = :action
 								WHERE id = :id");
 		$requete->bindValue(':hdebut', 		$this->heure_debut);
 		$requete->bindValue(':hfin', 		$this->heure_fin);
 		$requete->bindValue(':mdebut', 		$this->minute_debut);
 		$requete->bindValue(':mfin', 		$this->minute_fin);
 		$requete->bindValue(':action', 		$this->action);
-		$requete->bindValue(':id', 			$this->id);
-		$requete->bindValue(':heure_d',		$this->heure_d);
-		$requete->bindValue(':heure_d',		$this->heure_f);
+		$requete->bindValue(':id', 		$this->id);
 		$requete->execute();
 	}
 }

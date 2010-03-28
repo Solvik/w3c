@@ -55,7 +55,7 @@ class Programmation
 	 * @param $action int L'action à éxecuter : ID de la playlist ou ID de la musique dans le cas d'un podcast
 	 * @return void
 	 */
-	public static function addEvent (Member $compte, $type, $jour, $hdebut, $hfin, $mdebut, $mfin, $action, $heure_d, $heure_f)
+	public static function addEvent (Member $compte, $type, $jour, $hdebut, $hfin, $mdebut, $mfin, $action)
 	{
 		$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 		$requete = $pdo->prepare("INSERT INTO planification SET
@@ -66,8 +66,6 @@ class Programmation
 								heure_fin = :hfin,
 								minute_debut = :mdebut,
 								minute_fin = :mfin,
-								heure_d = :heure_d,
-								heure_f = :heure_f,
 								action = :action");
 		$requete->bindValue(':type', 		$type);
 		$requete->bindValue(':jour', 		$jour);
@@ -76,9 +74,6 @@ class Programmation
 		$requete->bindValue(':mdebut', 		$mdebut);
 		$requete->bindValue(':mfin', 		$mfin);
 		$requete->bindValue(':action', 		$action);
-		$requete->bindValue(':heure_d', 	$heure_d);
-		$requete->bindValue(':heure_f', 	$heure_f);
-
 		$requete->execute();
 	}
 }

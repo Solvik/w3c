@@ -17,13 +17,11 @@ if(isset($_POST['edit']))
 	$mfin = intval($_POST['mfin']);
 	$action = intval($_POST['action']);
 		
-	$event->heure_debut		= $hdebut;
+	$event->heure_debut		= nb_with_zero($hdebut).":".nb_with_zero($mdebut).":00";
+	$event->heure_fin		= nb_with_zero($hfin).":".nb_with_zero($mfin).":00";
 	$event->minute_debut	= $mdebut;
-	$event->heure_fin		= $hfin;
-	$event->minute_fin		= $mfin;
-	$event->action			= $action;
-	$event->heure_d			= nb_with_zero($hdebut).":".nb_with_zero($mdebut).":00";
-	$event->heure_f			= nb_with_zero($hfin).":".nb_with_zero($mfin).":00";
+	$event->minute_fin	= $mfin;
+	$event->action		= $action;
 	$event->save();
 	include VIEW.'edit-success.html';
       }

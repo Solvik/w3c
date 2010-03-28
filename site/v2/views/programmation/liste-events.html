@@ -12,8 +12,8 @@ Jour : <strong><?php echo getJour($jour); ?></strong></p>
 	</tr>
 <?php foreach($events as $event): ?>
 	<tr>
-		<td><?php echo time_format($event->heure_debut, $event->minute_debut); ?></td>
-		<td><?php echo time_format($event->heure_fin, 	$event->minute_fin); ?></td>
+		<td><?php echo $event->heure_debut; ?></td>
+		<td><?php echo $event->heure_fin; ?></td>
 		<td><?php echo $event->type; ?></td>
 		<td><?php if($event->type == 'playlist') echo PlayList::getPlaylistName($event->action, $compte);
 				  else echo getPodcastName($event->action, $compte); ?></td>
