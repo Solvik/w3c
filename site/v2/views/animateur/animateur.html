@@ -2,13 +2,13 @@
 <div class="content_content">
 
 <p><u>Cr&eacute;er un animateur</u></p>
-<form action="edit" method="post">
+<form action="animateur-new" method="post">
 <table>
   <tr>
     <td>Animateur:</td>
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
-    <td><input type="text" name="animateur" /></td>
+    <td><input type="text" name="password" /></td>
   </tr>
   <tr>
     <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
@@ -21,29 +21,34 @@
 <ul>
 <?php
 
-$toto = 1;
-echo '<li>toto <a href="del-anim-'.$toto.'"><img src="images/del.png" alt="" /></a></li>'
+$animateurs = Animateurs::getAnim($compte);
 
+for ($i = 0; $animateurs[$i]; $i++)
+{
+   echo '<li>'.$animateurs[$i]['name'].' - '.$animateurs[$i]['password'].'<a href="animateur-del-'.$animateurs[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+}
 ?>
 </ul>
 <hr />
 
 <p><u>Assigner un cr&eacute;neau horaire &agrave; un animateur</u></p>
-<form action="edit" method="post">
+<form action="new-creneau" method="post">
 <table>
 	<tr>
 		<td>Animateur :</td>
 		<td>
-			<select name="animateur">
 <?php
 
-/*
-$animateurs = getAnim();
+echo '<select name="animateur">';
+
 for ($i = 0; $animateurs[$i]; $i++)
-echo '<option value="wich_anim">"'.$animateurs['nom'].'"</option>';
-*/
+{
+   echo '<option value="wich_anim">'
+   .$animateurs[$i]['name'].
+   '</option>';
+}
+echo '</select>';
 ?>
-			</select>
 		</td>
 	</tr>
 	<tr>
@@ -76,6 +81,23 @@ echo '<option value="wich_anim">"'.$animateurs['nom'].'"</option>';
 		<td><input type="submit" name="add_horaire" value="Ajouter" /></td>
 	</tr>
 </table>
+
+<p><u>Liste des creneaux</u></p>
+
+<ul>
+<?php
+
+/*
+$animateurs = Animateurs::getCreneaux($compte);
+
+for ($i = 0; $animateurs[$i]; $i++)
+{
+   echo '<li>'.$animateurs[$i]['name'].' - '.$animateurs[$i]['password'].'<a href="animateur-del-'.$animateurs[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+}
+*/
+?>
+</ul>
+
 
 </form>
 </div>
