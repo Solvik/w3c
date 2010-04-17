@@ -87,14 +87,12 @@ echo '</select>';
 <ul>
 <?php
 
-/*
-$animateurs = Animateurs::getCreneaux($compte);
+$creneaux = Creneaux::getCreneaux($compte);
 
-for ($i = 0; $animateurs[$i]; $i++)
+for ($i = 0; $creneaux[$i]; $i++)
 {
-   echo '<li>'.$animateurs[$i]['name'].' - '.$animateurs[$i]['password'].'<a href="animateur-del-'.$animateurs[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+   echo '<li>'.$creneaux[$i]['id_anim'].' - '.Creneaux::getDate($creneaux[$i]['jour']).' - '.$creneaux[$i]['heure_debut'].' - '.$creneaux[$i]['heure_fin'].'<a href="creneaux-del-'.$creneaux[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
 }
-*/
 ?>
 </ul>
 

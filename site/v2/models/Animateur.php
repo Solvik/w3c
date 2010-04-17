@@ -68,6 +68,7 @@ class Animateurs
 			  'password'	=> $result['password']);
 	$i++;
       }
+    $anim[$i] = NULL;
     return ($anim);
   }
 
@@ -187,18 +188,72 @@ class Creneaux
   }
   public static function getCreneaux(Member $compte)
   {
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT * FROM `animateurs_creneaux`';
+    $anim = array();
+
+    $i = 0;
+    foreach ($pdo->query($query) as $result)
+      {
+	$anim[$i] = array('id'		=> $result['id'],
+			  'id_anim'	=> $result['id_anim'],
+			  'jour'	=> $result['jour'],
+			  'heure_debut'	=> $result['heure_debut'],
+			  'heure_fin'	=> $result['heure_fin']);
+	$i++;
+      }
+    $anim[$i] = NULL;
+    return ($anim);    
   }
 
-  public static function createCreneaux(Member $compte, $id, $heure_debut, $heure_fin)
+  public static function deleteCreneaux(Member $compte, $id)
   {
-    ;
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT `id` FROM `animateurs_creneaux` WHERE id = "'.$id.'"';
+    $res = $pdo->query($query);
+
+    if ($res->fetchColumn() > 0)
+      {
+	$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id`= '.$id.'');
+	return (1);
+      }
+    else
+      return (0);
   }
 
-  public static function deleteCreneaux(Member $compte, $id, $heure_debut, $heure_fin)
+  public static function getAnim(Member $compte, $id)
   {
-    ;
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT `name` FROM `animateurs` WHERE id = "'.$id.'"';
+    $res = $pdo->query($query);
+
+    return ($res);
   }
 
+  public static function getDate($id)
+  {
+    $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
+
+    return ($jour[$id]);
+  }
+
+
+  public function save ()
+  {
+    @$pdo = UserDS::getInstance($this->compte->login."_".$this->compte->getStream()->id);
+		
+    $requete = $pdo->prepare("UPDATE animateurs_creneaux SET
+						jour = :jour,
+						heure_debut = :heure_debut,
+						heure_fin = :heure_fin
+					WHERE id = :id");
+
+    $requete->bindValue(':jour', 		$this->jour);
+    $requete->bindValue(':heure_debut',		$this->heure_debut);
+    $requete->bindValue(':heure_fin',		$this->heure_fin);
+    $requete->bindValue(':id',			$this->id);
+    $requete->execute();
+  }
 }
 
 ?>
