@@ -54,7 +54,7 @@ class Animateur
       }
   }
 
-  public static function getAnim(Member $compte)
+  public static function getAnimateurs(Member $compte)
   {
     @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
     $query = 'SELECT * FROM `animateurs`';
