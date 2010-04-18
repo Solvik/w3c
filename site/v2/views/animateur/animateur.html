@@ -9,8 +9,6 @@
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
     <td><input type="text" name="password" /></td>
-  </tr>
-  <tr>
     <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
   </tr>
 </table>
@@ -18,17 +16,25 @@
 
 <p><u>Liste des animateurs</u></p>
 
-<ul>
+<table style="width:100%;">
+	<tr>
+		<th>Nom</th>
+		<th>Mot de Passe</th>
+		<th>Actions</th>
+	</tr>
 <?php
 
 $animateurs = Animateurs::getAnim($compte);
 
-for ($i = 0; $animateurs[$i]; $i++)
+foreach ($animateurs as $animateur)
 {
-   echo '<li>'.$animateurs[$i]['name'].' - '.$animateurs[$i]['password'].'<a href="animateur-del-'.$animateurs[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+   echo '<tr><td>'.$animateur['name'].'</td>';
+   echo '<td>'.$animateur['password'].'</td>';
+   echo '<a href="animateur-edit-'.$animateur['id'].'"><img src="images/edit.png" alt="" /> Editer</a> &nbsp;|&nbsp;
+   <a href="animateur-del-'.$animateur['id'].'"><img src="images/del.png" alt="" /> Supprimer</a></td></tr>';
 }
 ?>
-</ul>
+</table>
 <hr />
 
 <p><u>Assigner un cr&eacute;neau horaire &agrave; un animateur</u></p>
