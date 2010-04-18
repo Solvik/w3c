@@ -1,4 +1,4 @@
-<div class="boxtitle">Mon stream</div>
+<div class="boxtitle">Mes Animateurs</div>
 <div class="content_content">
 
 <p><u>Cr&eacute;er un animateur</u></p>
@@ -9,7 +9,7 @@
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
     <td><input type="text" name="password" /></td>
-    <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
+    <td><input class="submit" type="submit" name="add" value="Ajouter" /></td>
   </tr>
 </table>
 </form>
@@ -24,13 +24,13 @@
 	</tr>
 <?php
 
-$animateurs = Animateurs::getAnim($compte);
+$animateurs = Animateur::getAnims($compte);
 
 foreach ($animateurs as $animateur)
 {
-   echo '<tr><td>'.$animateur['name'].'</td>';
-   echo '<td>'.$animateur['password'].'</td>';
-   echo '<a href="animateur-edit-'.$animateur['id'].'"><img src="images/edit.png" alt="" /> Editer</a> &nbsp;|&nbsp;
+   echo '<tr><td style="width:33%;">'.$animateur['name'].'</td>';
+   echo '<td style="width:33%;">'.$animateur['password'].'</td>';
+   echo '<td style="width:33%;"><a href="animateur-edit-'.$animateur['id'].'"><img src="images/edit.png" alt="" /> Editer</a> &nbsp;|&nbsp;
    <a href="animateur-del-'.$animateur['id'].'"><img src="images/del.png" alt="" /> Supprimer</a></td></tr>';
 }
 ?>

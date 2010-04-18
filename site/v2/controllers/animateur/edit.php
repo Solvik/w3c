@@ -3,12 +3,10 @@ if(!is_online()) { include NON_CONNECTE; exit(); }
 
 $compte = new Member(Member::EXISTANT, $_SESSION['login']);
 
-include MODEL.'Animateur.php';
-
 $id = intval($_GET['id']);
 if (isset($_POST['edit']))
 {
-	$animateur = new Animateurs($compte, $id);
+	$animateur = new Animateur($compte, $id);
 	if ($animateur)
 	{
 		$animateur->name = htmlspecialchars($_POST['animateur']);
@@ -21,6 +19,6 @@ if (isset($_POST['edit']))
 }
 else
 {
-	$animateur = new Animateurs($compte, $id);
+	$animateur = new Animateur($compte, $id);
 	if ($animateur) include VIEW.'edit.html';
 }

@@ -7,7 +7,7 @@
    */
 
 
-class Animateurs
+class Animateur
 {
   /** Variables **/
   protected $id;
