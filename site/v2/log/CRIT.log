@@ -42,3 +42,21 @@ USER - 26/09/2009 - 15:43:22 : Unknown column 'pass' in 'where clause'
 #2  getMusicList(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => 95000,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 0,[] => ,[] => ,[] => solvik), Stream Object ([] => 1,[] => 1,[] => Offre Object ([] => 1,[] => 160,[] => 50,[] => 14.00,[] => 0),[] => 24,[] => en cours,[] => Test,[] => Mon flux personnel,[] => Rock,[] => test,[] => http://www.oxycast.net,[] => motdepasse,[] => 9001,[] => 2010-02-26 00:00:00,[] => 2011-02-26 00:00:00,[] => 88.191.250.170,[] => mp3,[] => mp3,[] => 3,[] => 2), titre, asc) called at [/home/oxycast/w3c/site/v2/controllers/musique/index.php:26]
 #3  include(/home/oxycast/w3c/site/v2/controllers/musique/index.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
 
+ - 19/04/2010 - 15:34:08 : Unknown column 'nom' in 'where clause'
+#0  UserDS->__call(query, Array ([0] => SELECT id FROM animateurs WHERE nom = 'lol'))
+#1  UserDS->query(SELECT id FROM animateurs WHERE nom = 'lol') called at [/home/oxycast/w3c/site/v2/models/Animateur.php:39]
+#2  Animateur->__construct(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => *****,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => solvik), -1, lol, mdr) called at [/home/oxycast/w3c/site/v2/controllers/animateur/add.php:10]
+#3  include(/home/oxycast/w3c/site/v2/controllers/animateur/add.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+
+ - 19/04/2010 - 15:37:19 : Unknown column 'name' in 'where clause'
+#0  UserDS->__call(query, Array ([0] => SELECT id FROM animateurs_creneaux WHERE name = ''))
+#1  UserDS->query(SELECT id FROM animateurs_creneaux WHERE name = '') called at [/home/oxycast/w3c/site/v2/models/Animateur.php:172]
+#2  Creneaux->__construct(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => *****,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => solvik), -1, , 04:0000, 10:0000, 3, ) called at [/home/oxycast/w3c/site/v2/controllers/animateur/add.php:26]
+#3  include(/home/oxycast/w3c/site/v2/controllers/animateur/add.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+
+ - 19/04/2010 - 15:38:44 : Unknown column 'name' in 'where clause'
+#0  UserDS->__call(query, Array ([0] => SELECT id FROM animateurs_creneaux WHERE name = ''))
+#1  UserDS->query(SELECT id FROM animateurs_creneaux WHERE name = '') called at [/home/oxycast/w3c/site/v2/models/Animateur.php:172]
+#2  Creneaux->__construct(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => *****,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => solvik), -1, 2, 04:0000, 10:0000, 3, ) called at [/home/oxycast/w3c/site/v2/controllers/animateur/add.php:26]
+#3  include(/home/oxycast/w3c/site/v2/controllers/animateur/add.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+

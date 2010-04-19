@@ -36,7 +36,7 @@ class Animateur
 	$this->name			= $name;
 	$this->password			= $password;
 
-	$requete = $pdo->query('SELECT id FROM animateurs WHERE nom = \''. $name .'\'')->fetchColumn();
+	$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
 	$this->id			= $requete;
       }
     else
@@ -169,8 +169,8 @@ class Creneaux
 	$this->heure_fin		= $heure_fin;
 
 
-	$requete = $pdo->query('SELECT id FROM animateurs_creneaux WHERE nom = \''. $name .'\'')->fetchColumn();
-	$this->id			= $requete;
+// 	$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
+// 	$this->id			= $requete;
       }
     else
       {		

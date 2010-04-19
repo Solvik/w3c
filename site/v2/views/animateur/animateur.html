@@ -9,7 +9,7 @@
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
     <td><input type="text" name="password" /></td>
-    <td><input class="submit" type="submit" name="add" value="Ajouter" /></td>
+    <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
   </tr>
 </table>
 </form>
@@ -38,7 +38,7 @@ foreach ($animateurs as $animateur)
 <hr />
 
 <p><u>Assigner un cr&eacute;neau horaire &agrave; un animateur</u></p>
-<form action="new-creneau" method="post">
+<form action="creneaux-new" method="post">
 <table>
 	<tr>
 		<td>Animateur :</td>
@@ -84,7 +84,7 @@ echo '</select>';
 	</tr>
 	<tr>
 		<td></td>
-		<td><input type="submit" name="add_horaire" value="Ajouter" /></td>
+		<td><input type="submit" name="add_creneaux" value="Ajouter" /></td>
 	</tr>
 </table>
 

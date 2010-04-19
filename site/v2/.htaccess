@@ -19,6 +19,11 @@ RewriteRule ^stream$ index.php?module=stream [L]
 RewriteRule ^stream-modifier$ index.php?module=stream&act=modifier [L]
 RewriteRule ^renew$ index.php?module=renew [L]
 RewriteRule ^renew-etape2$ index.php?module=renew&act=renew [L]
+
+
+## Playlist
+
+
 RewriteRule ^playlists$ index.php?module=playlist [L]
 RewriteRule ^playlists-new$ index.php?module=playlist&act=new [L]
 RewriteRule ^playlists-del-([0-9]*)$ index.php?module=playlist&act=del&playlist=$1 [L]
@@ -26,15 +31,37 @@ RewriteRule ^playlists-rename-([0-9]*)$ index.php?module=playlist&act=rename&pla
 RewriteRule ^playlists-musique-add-([0-9]*)$ index.php?module=playlist&act=musique-add&playlist=$1 [L]
 RewriteRule ^playlists-musique-add-([0-9]*)-order-by-([a-z]*)-([a-z]*)$ index.php?module=playlist&act=musique-add&playlist=$1&order=$2&sens=$3 [L]
 RewriteRule ^playlists-musique-del-([0-9]*)-([0-9]*)$ index.php?module=playlist&act=musique-del&playlist=$1&music=$2 [L]
+
+
+## Animateurs
+
+
 RewriteRule ^animateur$ index.php?module=animateur [L]
 RewriteRule ^animateur-new$ index.php?module=animateur&act=add [L]
-RewriteRule ^animateur-edit-([0-9]*)$ index.php?module=animateur&act=edit&id=$1 [L]
-RewriteRule ^animateur-del-([0-9]*)$ index.php?module=animateur&act=del&id=$1 [L]
-RewriteRule ^creneaux-del-([0-9]*)$ index.php?module=animateur&act=del&id=$1 [L]
+RewriteRule ^animateur-edit-([0-9]*)$ index.php?module=animateur&act=edit&type=animateur&id=$1 [L]
+RewriteRule ^animateur-del-([0-9]*)$ index.php?module=animateur&act=del&type=animateur&id=$1 [L]
+
+
+## Creneaux
+
+
+RewriteRule ^creneaux-new$ index.php?module=animateur&act=add [L]
+RewriteRule ^creneaux-edit-([0-9]*)$ index.php?module=animateur&act=edit&type=creneaux&id=$1 [L]
+RewriteRule ^creneaux-del-([0-9]*)$ index.php?module=animateur&act=del&type=creneaux&id=$1 [L]
+
+
+## Musique
+
+
 RewriteRule ^musique$ index.php?module=musique [L]
 RewriteRule ^musique-edit-([0-9]*)$ index.php?module=musique&act=edit&id=$1 [L]
 RewriteRule ^musique-order-by-([a-z]*)-([a-z]*)$ index.php?module=musique&order=$1&sens=$2 [L]
 RewriteRule ^musique-update$ index.php?module=musique&update [L]
+
+
+## Programmation
+
+
 RewriteRule ^programmation$ index.php?module=programmation [L]
 RewriteRule ^programmation-([1-7])$ index.php?module=programmation&jour=$1 [L]
 RewriteRule ^programmation-del-([0-9]*)$ index.php?module=programmation&act=del&id=$1 [L]
@@ -49,11 +76,21 @@ RewriteRule ^root/del/([0-9]*)$ index.php?module=admin&act=del&id=$1 [L]
 RewriteRule ^root/suspend/([0-9]*)$ index.php?module=admin&act=suspend&id=$1 [L]
 RewriteRule ^contact$ index.php?module=contact [L]
 RewriteRule ^irc$ index.php?module=support&act=irc [L]
+
+
+## Commande
+
+
 RewriteRule ^commande$ index.php?module=commande [L]
 RewriteRule ^commande-S$ index.php?module=commande&offre=S [L]
 RewriteRule ^commande-L$ index.php?module=commande&offre=L [L]
 RewriteRule ^commande-XL$ index.php?module=commande&offre=XL [L]
 RewriteRule ^commande-XXL$ index.php?module=commande&offre=XXL [L]
+
+
+## Paiement
+
+
 RewriteRule ^paiement-([0-9]*)-([a-z]*)$ index.php?module=paiement&transacid=$1&type=$2 [L]
 RewriteRule ^paiement-valide$ index.php?module=paiement&act=valide [L]
 RewriteRule ^paiement-annule$ index.php?module=paiement&act=annule [L]

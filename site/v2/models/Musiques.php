@@ -7,16 +7,6 @@
    */
 
 
-function nb_with_zero($nb)
-{
-  if ($nb < 10)
-    {
-      $toto = "0".$nb;
-      return ($toto);
-    }
-  return ($nb);
-}
-
   /**
    * @desc Retourne la liste complète des musiques du compte
    * @param $compte Member L'instance du compte
