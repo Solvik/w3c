@@ -13,6 +13,7 @@ class Animateur
   protected $id;
   protected $name;
   protected $password;
+  protected $email;
   protected $compte;
 	
   const NOUVEAU = -1;
@@ -21,7 +22,7 @@ class Animateur
    * @desc Contructeur
    * @return bool
    */
-  public function __construct (Member $compte, $animateurId, $name = null, $password = null)
+  public function __construct (Member $compte, $animateurId)
   {
     @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
     $this->compte = $compte;

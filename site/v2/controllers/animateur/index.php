@@ -10,15 +10,5 @@ if(!$compte->getStream()->hasStream())
  else
    {
      $stream = $compte->getStream();
-
-     if (!empty($_GET['add_animateur']))
-       {
-	 echo "toto";
-       }
-     elseif (!empty($_GET['add_horaire']))
-       {
-	 echo "toto";
-       }
-     else
-       include VIEW.'animateur.html';
+     include VIEW.'animateur.html';
    }

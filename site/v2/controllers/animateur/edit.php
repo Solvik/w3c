@@ -5,7 +5,8 @@ $compte = new Member(Member::EXISTANT, $_SESSION['login']);
 
 include MODEL.'Animateur.php';
 
-$id = intval($_GET['id']);
+if (isset($_GET['id']))
+    $id = intval($_GET['id']);
 if (isset($_POST['edit']))
   {
     // Si le type est animateur
@@ -21,10 +22,18 @@ if (isset($_POST['edit']))
 	    echo "success";
 	    //include 'views/animateur/edit-success.html';
 	  }
+	else
+	  echo "lol";
       }
     // Sinon c'est un creneaux
     else
       {
-	;
+	// on update le creneaux lolz
       }
   }
+ else
+   {
+     $animateur = new Animateur($compte, $id);
+     if ($animateur)
+       include VIEW.'edit-animateur.html';
+   }
