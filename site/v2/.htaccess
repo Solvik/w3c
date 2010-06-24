@@ -57,6 +57,8 @@ RewriteRule ^musique$ index.php?module=musique [L]
 RewriteRule ^musique-edit-([0-9]*)$ index.php?module=musique&act=edit&id=$1 [L]
 RewriteRule ^musique-order-by-([a-z]*)-([a-z]*)$ index.php?module=musique&order=$1&sens=$2 [L]
 RewriteRule ^musique-update$ index.php?module=musique&update [L]
+RewriteRule ^musique$ index.php?module=musique [L]
+RewriteRule ^musique-upload$ index.php?module=musique&act=upload [L]
 
 
 ## Programmation

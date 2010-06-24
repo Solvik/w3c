@@ -41,7 +41,11 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
     <td colspan="2"><input type="text" name="mountpoint" value="<?php echo $stream->mountpoint; ?>" />.<select name="format_output"><option value="mp3" <?php if($stream->format_output == "mp3") echo 'selected="selected"' ?>>mp3</option><option value="ogg" <?php if($stream->format_output == "ogg") echo 'selected="selected"' ?>>ogg</option></td>
   </tr>
   <tr>
-    <td align="right">Live</td>
+    <td align="right">IP Live</td>
+    <td colspan="2"><input type="text" name="ip_live" disabled="disabled" value="<?php echo $stream->ip_serveur; ?>" /></td>
+  </tr>
+  <tr>
+    <td align="right">Mountpoint Live</td>
     <td colspan="2"><input type="text" value="live" disabled="disabled" />.<select name="format_live"><option value="mp3" <?php if($stream->format_live == "mp3") echo 'selected="selected"' ?>>mp3</option><option value="ogg" <?php if($stream->format_live == "ogg") echo 'selected="selected"' ?>>ogg</option></td>
   </tr>
   <tr>
@@ -90,11 +94,26 @@ Vous b&eacute;n&eacute;ficiez actuellement de l'offre <?php echo "<b>". $stream-
 <div align="center">
 Votre flux est disponible &agrave; l'adresse:<br />
 <?php
-$streamUrl = "http://www.oxycast.net:8000/".$stream->mountpoint.".".$stream->format_output;
+$streamUrl = "http://www.oxycast.net:8000/".$stream->mountpoint.".".$stream->format_output.".m3u";
 $sizeStreamUrl = strlen($streamUrl);
 echo '<input type="text" name="nom" size="'.$sizeStreamUrl.'" value="'.$streamUrl.'" />';
 ?>
 </div>
+
+<p><u>Mon player</u></br />
+<div align="center">
+Voici le code HTML de votre player pour le placer sur votre site<br />
+<?php
+
+$playerHtml = '<object type="application/x-shockwave-flash" data="http://oxycast.net/dewplayer.swf" width="200" height="20" id="dewplayer" name="dewplayer">
+<param name="wmode" value="transparent" />
+<param name="movie" value="dewplayer.swf" />
+<param name="flashvars" value="mp3=http://www.oxycast.net:8000/'.$stream->mountpoint.'.'.$stream->format_output.'" />
+</object>';
+
+echo '<textarea rows="4" cols="50">'.$playerHtml.'</textarea>';
+
+?>
 
 <?php endif; ?>
 </div>
