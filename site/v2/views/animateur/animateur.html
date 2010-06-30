@@ -9,8 +9,6 @@
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
     <td><input type="text" name="password" /></td>
-    <td>Email:</td>
-    <td><input type="text" name="email" value=""/></td>
     <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
   </tr>
 </table>
@@ -90,12 +88,12 @@ foreach ($animateurs as $animateur)
 <ul>
 <?php
 
-/*$creneaux = Creneaux::getCreneaux($compte);
+$creneaux = Creneaux::getCreneaux($compte);
 
-for ($i = 0; $creneaux[$i]; $i++)
+foreach ($creneaux as $creneau)
 {
-   echo '<li>'.$creneaux[$i]['id_anim'].' - '.Creneaux::getDate($creneaux[$i]['jour']).' - '.$creneaux[$i]['heure_debut'].' - '.$creneaux[$i]['heure_fin'].'<a href="creneaux-del-'.$creneaux[$i]['id'].'"> <img src="images/del.png" alt="" /></a></li>';
-}*/
+   echo '<li>'.$creneau['id_anim'].' - '.Creneaux::getDate($creneau['jour']).' - '.$creneau['heure_debut'].' - '.$creneau['heure_fin'].'<a href="creneaux-del-'.$creneau['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+}
 ?>
 </ul>
 

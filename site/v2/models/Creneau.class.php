@@ -13,8 +13,6 @@ class Creneau
 	protected $jour;
 	protected $heure_debut;
 	protected $heure_fin;
-	protected $minute_debut;
-	protected $minute_fin;
 	protected $compte;
 	
 	/**
@@ -35,8 +33,6 @@ class Creneau
 		$this->jour			= $infos->jour;
 		$this->heure_debut	= $infos->heure_debut;
 		$this->heure_fin	= $infos->heure_fin;
-		$this->minute_debut	= $infos->minute_debut;
-		$this->minute_fin	= $infos->minute_fin;
 	}
 	
 	/**
@@ -74,14 +70,10 @@ class Creneau
 		$requete = $pdo->prepare("UPDATE animateurs_creneaux SET
 								heure_debut = :hdebut,
 								heure_fin = :hfin,
-								minute_debut = :mdebut,
-								minute_fin = :mfin,
 								action = :action
 								WHERE id = :id");
 		$requete->bindValue(':hdebut', 		$this->heure_debut);
 		$requete->bindValue(':hfin', 		$this->heure_fin);
-		$requete->bindValue(':mdebut', 		$this->minute_debut);
-		$requete->bindValue(':mfin', 		$this->minute_fin);
 		$requete->bindValue(':id', 			$this->id);
 		$requete->execute();
 	}

@@ -13,7 +13,6 @@ class Animateur
   protected $id;
   protected $name;
   protected $password;
-  protected $email;
   protected $compte;
 	
   const NOUVEAU = -1;
@@ -49,7 +48,6 @@ class Animateur
 			$this->id			= $infos->id;
 			$this->name			= $infos->name;
 			$this->password		= $infos->password;
-			$this->email		= $infos->email;
 			$this->compte		= $compte;
 				
 			return true;

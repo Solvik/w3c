@@ -15,7 +15,7 @@ class Creneaux
 	 * @param $compte Member Le compte
 	 * @return array
 	 */
-	public static function getCreneaux ($jour, Member $compte)
+	public static function getCreneaux (Member $compte, $jour)
 	{
 		$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 		
@@ -63,11 +63,9 @@ class Creneaux
 	 * @param $jour int Le jour : 1 à 7
 	 * @param $hdebut int
 	 * @param $hfin int
-	 * @param $mdebut int
-	 * @param $mfin int
 	 * @return void
 	 */
-	public static function addCreneau (Member $compte, $id_anim, $jour, $hdebut, $hfin, $mdebut, $mfin)
+	public static function addCreneau (Member $compte, $id_anim, $jour, $hdebut, $hfin)
 	{
 		$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 		$requete = $pdo->prepare("INSERT INTO animateurs_creneaux SET
@@ -76,15 +74,11 @@ class Creneaux
 								jour = :jour,
 								heure_debut = :hdebut,
 								heure_fin = :hfin,
-								minute_debut = :mdebut,
-								minute_fin = :mfin,
 								action = :action");
 		$requete->bindValue(':id_anim', 	$id_anim);
 		$requete->bindValue(':jour', 		$jour);
 		$requete->bindValue(':hdebut', 		$hdebut);
 		$requete->bindValue(':hfin', 		$hfin);
-		$requete->bindValue(':mdebut', 		$mdebut);
-		$requete->bindValue(':mfin', 		$mfin);
 		$requete->execute();
 	}
 }
