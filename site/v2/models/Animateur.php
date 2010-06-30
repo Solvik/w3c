@@ -18,76 +18,73 @@ class Animateur
 	
   const NOUVEAU = -1;
 
-  /**
-   * @desc Contructeur
-   * @return bool
-   */
-  public function __construct (Member $compte, $animateurId)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $this->compte = $compte;
+	/**
+	 * @desc Contructeur
+	 * @return bool
+	 */
+	public function __construct (Member $compte, $animateurId, $name = null, $password = null)
+	{
+		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+		$this->compte = $compte;
 
-    if ($animateurId == self::NOUVEAU)
-      {
-	$requete = $pdo->prepare("INSERT INTO animateurs SET name = :name, password = :password");
-	$requete->bindValue(':name', $name);
-	$requete->bindValue(':password', $password);
-	$requete->execute();
+		if ($animateurId == self::NOUVEAU)
+		{
+			$requete = $pdo->prepare("INSERT INTO animateurs SET name = :name, password = :password");
+			$requete->bindValue(':name', $name);
+			$requete->bindValue(':password', $password);
+			$requete->execute();
 
-	$this->name			= $name;
-	$this->password			= $password;
+			$this->name		= $name;
+			$this->password	= $password;
 
-	$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
-	$this->id			= $requete;
-      }
-    else
-      {		
-	$infos = $pdo->query('SELECT * FROM `animateurs` WHERE id = '.intval($animateurId))->fetch(PDO::FETCH_OBJ);
-		
-	if($infos === false) return false;
-		
-	$this->id			= $infos->id;
-	$this->name			= $infos->name;
-	$this->password			= $infos->password;
-	$this->compte			= $compte;
-		
-	return true;
-      }
-  }
+			$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
+			$this->id = $requete;
+		}
+		else
+		{		
+			$infos = $pdo->query('SELECT * FROM `animateurs` WHERE id = '.intval($animateurId))->fetch(PDO::FETCH_OBJ);
+				
+			if($infos === false) return false;
+				
+			$this->id			= $infos->id;
+			$this->name			= $infos->name;
+			$this->password			= $infos->password;
+			$this->compte			= $compte;
+				
+			return true;
+		}
+	}
 
-  public static function getAnimateurs(Member $compte)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $query = 'SELECT * FROM `animateurs`';
-    $anim = array();
+	public static function getAnimateurs(Member $compte)
+	{
+		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+		$query = 'SELECT * FROM `animateurs`';
+		$anim = array();
 
-    $i = 0;
-    foreach ($pdo->query($query) as $result)
-      {
-	$anim[$i] = array('id'	=> $result['id'],
-			  'name'	=> utf8_encode($result['name']),
-			  'password'	=> $result['password']);
-	$i++;
-      }
-    $anim[$i] = NULL;
-    return ($anim);
-  }
+		foreach ($pdo->query($query) as $result)
+		{
+			array_push($anim, array('id'		=> $result['id'],
+									'name'		=> utf8_encode($result['name']),
+									'password'	=> $result['password'])
+					  );
+		}
+		return $anim;
+	}
 
-  public static function deleteAnim(Member $compte, $id)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $query = 'SELECT `id` FROM `animateurs` WHERE id = "'.$id.'"';
-    $res = $pdo->query($query);
+	public static function deleteAnim(Member $compte, $id)
+	{
+		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+		$query = 'SELECT `id` FROM `animateurs` WHERE id = "'.$id.'"';
+		$res = $pdo->query($query);
 
-    if ($res->fetchColumn() > 0)
-      {
-	$pdo->query('DELETE FROM `animateurs` WHERE `id` = '.$id.'');
-	$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id_anim`= '.$id.'');
-	return (1);
-      }
-    else
-      return (0);
-  }
+		if ($res->fetchColumn() > 0)
+		{
+			$pdo->query('DELETE FROM `animateurs` WHERE `id` = '.$id.'');
+			$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id_anim`= '.$id.'');
+			return 1;
+		} else
+			return 0;
+	}
   /**
    * @desc Méthode chargée de retourner la valeur de l'attribut en paramètre.
    * @param $attribut string Le nom de l'attribut.
