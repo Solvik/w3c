@@ -15,11 +15,11 @@ class Creneaux
 	 * @param $compte Member Le compte
 	 * @return array
 	 */
-	public static function getCreneaux (Member $compte, $jour)
+	public static function getCreneaux (Member $compte)
 	{
 		$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
 		
-		$query = 'SELECT id FROM animateurs_creneaux WHERE jour = '.intval($jour);
+		$query = 'SELECT id FROM animateurs_creneaux';
 		$list = array();
 		$i = 0;
 		
@@ -80,5 +80,12 @@ class Creneaux
 		$requete->bindValue(':hdebut', 		$hdebut);
 		$requete->bindValue(':hfin', 		$hfin);
 		$requete->execute();
+	}
+	
+	public static function getDate($id)
+	{
+		$jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
+
+		return $jour[$id];
 	}
 }

@@ -24,8 +24,6 @@ if (isset($_POST['edit']))
 		else
 		  echo 'erreur';
     }
-	/*elseif ($_GET['type']) && $_GET['type'] == "creneau") //TODO: Creneaux
-    { }*/
 }
 else
 {

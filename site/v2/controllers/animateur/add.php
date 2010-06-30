@@ -16,9 +16,12 @@ elseif (isset($_POST['add_creneaux']))
   $heure_debut = nb_with_zero(htmlspecialchars($_POST['hdebut'])).":".nb_with_zero(htmlspecialchars($_POST['mdebut']))."00";
   $heure_fin = nb_with_zero(htmlspecialchars($_POST['hfin'])).":".nb_with_zero(htmlspecialchars($_POST['mfin']))."00";
 
-  Creneaux::addCreneau($compte, Creneaux::NOUVEAU,
-			   intval($_POST['animateur']),
-			   $heure_debut,
-			   $heure_fin,
-			   htmlspecialchars($_POST['jour']));
+  Creneaux::addCreneau(		$compte,
+							intval($_POST['animateur']),
+							$heure_debut,
+							$heure_fin,
+							htmlspecialchars($_POST['jour'])
+					   );
+			   
+	header('Location: animateur');
 }

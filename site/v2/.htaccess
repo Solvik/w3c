@@ -46,7 +46,6 @@ RewriteRule ^animateur-del-([0-9]*)$ index.php?module=animateur&act=del&type=ani
 
 
 RewriteRule ^creneaux-new$ index.php?module=animateur&act=add [L]
-RewriteRule ^creneaux-edit-([0-9]*)$ index.php?module=animateur&act=edit&type=creneaux&id=$1 [L]
 RewriteRule ^creneaux-del-([0-9]*)$ index.php?module=animateur&act=del&type=creneaux&id=$1 [L]
 
 
