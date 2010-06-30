@@ -10,7 +10,7 @@ $id = intval($_GET['id']);
 if ($_GET['type'] == "animateur")
 {
     $result1 = Animateur::deleteAnim($compte, $id);
-	$result2 = Creneaux::deleteAnimateurCreneaux($compte, $id);
+	$result2 = Creneaux::delAnimCreneaux($compte, $id);
 	
     if ($result1 AND $result2)
 		header('Location: animateur');
@@ -18,5 +18,5 @@ if ($_GET['type'] == "animateur")
 		include VIEW.'suppression-animateur-fail.html';
 }
 else
-	Creneaux::deleteCreneaux($compte, $id);
+	Creneaux::delCreneau($compte, $id);
        
