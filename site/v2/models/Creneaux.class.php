@@ -73,8 +73,7 @@ class Creneaux
 								id_anim = :id_anim,
 								jour = :jour,
 								heure_debut = :hdebut,
-								heure_fin = :hfin,
-								action = :action");
+								heure_fin = :hfin");
 		$requete->bindValue(':id_anim', 	$id_anim);
 		$requete->bindValue(':jour', 		$jour);
 		$requete->bindValue(':hdebut', 		$hdebut);
