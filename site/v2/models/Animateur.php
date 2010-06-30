@@ -178,8 +178,8 @@ class Creneaux
 		
 	$this->id			= $infos->id;
 	$this->name			= $infos->name;
-	$this->password			= $infos->password;
-	$this->compte			= $compte;
+	$this->password		= $infos->password;
+	$this->compte		= $compte;
 		
 	return true;
       }

@@ -10,7 +10,7 @@ if (isset($_POST['add_animateur']))
 	$animateur = new Animateur($compte, Animateur::NOUVEAU, htmlspecialchars($_POST['animateur']), htmlspecialchars($_POST['password']));
 	header('Location: animateur');
 }
-elseif (isset($_POST[ 'add_creneaux']))
+elseif (isset($_POST['add_creneaux']))
 {
   // pour toto, faut l'id de l'anim
   echo $_POST['animateur'];
@@ -22,6 +22,5 @@ elseif (isset($_POST[ 'add_creneaux']))
 			   "2",
 			   $heure_debut,
 			   $heure_fin,
-			   htmlspecialchars($_POST['jour']),
-			   "");
+			   htmlspecialchars($_POST['jour']),);
 }
