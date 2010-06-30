@@ -19,5 +19,7 @@ if ($_GET['type'] == "animateur")
 		include VIEW.'suppression-animateur-fail.html';
 }
 else
+{
 	Creneaux::delCreneau($compte, $id);
-       
+	header('Location: animateur');
+}
