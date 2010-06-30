@@ -92,7 +92,7 @@ $creneaux = Creneaux::getCreneaux($compte);
 
 foreach ($creneaux as $creneau)
 {
-   echo '<li>'.$creneau['id_anim'].' - '.Creneaux::getDate($creneau['jour']).' - '.$creneau['heure_debut'].' - '.$creneau['heure_fin'].'<a href="creneaux-del-'.$creneau['id'].'"> <img src="images/del.png" alt="" /></a></li>';
+   echo '<li>'.$creneau->id_anim.' - '.Creneaux::getDate($creneau->jour).' - '.$creneau->heure_debut.' - '.$creneau->heure_fin.'<a href="creneaux-del-'.$creneau->id.'"> <img src="images/del.png" alt="" /></a></li>';
 }
 ?>
 </ul>
