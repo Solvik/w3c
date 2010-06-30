@@ -1,8 +1,6 @@
 <?php
 include MODEL.'Musiques.php';
 include MODEL.'Animateur.php';
-include MODEL.'Creneaux.php';
-include MODEL.'Creneau.php';
 
 if(!is_online()) { include NON_CONNECTE; exit(); }
 

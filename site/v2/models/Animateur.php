@@ -48,8 +48,9 @@ class Animateur
 				
 			$this->id			= $infos->id;
 			$this->name			= $infos->name;
-			$this->password			= $infos->password;
-			$this->compte			= $compte;
+			$this->password		= $infos->password;
+			$this->email		= $infos->email;
+			$this->compte		= $compte;
 				
 			return true;
 		}
@@ -128,130 +129,4 @@ class Animateur
     $requete->execute();
   }
 }
-
-  /**
-   * OxyCast
-   * @desc Gestion des creneaux
-   * @author alfo
-   * @version 1.0
-   */
-
-class Creneaux
-{
-  protected $compte;
-  protected $id_anim;
-  protected $jour;
-  protected $heure_debut;
-  protected $heure_fin;
-  protected $jingle;
-
-  const NOUVEAU = -1;
-
-  public function __construct (Member $compte, $animateurId, $id_anim = null, $jour = null, $heure_debut = null, $heure_fin = null, $jingle = null)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $this->compte = $compte;
-
-    if ($animateurId == self::NOUVEAU)
-      {
-	$requete = $pdo->prepare("INSERT INTO animateurs_creneaux SET jour = :jour, heure_debut = :heure_debut, heure_fin = :heure_fin");
-	$requete->bindValue(':id_anim', $id_anim);
-	$requete->bindValue(':jour', $jour);
-	$requete->bindValue(':heure_debut', $heure_debut);
-	$requete->bindValue(':heure_fin', $heure_fin);
-	$requete->execute();
-
-	$this->id_anim			= $id_anim;
-	$this->jour			= $jour;
-	$this->heure_debut		= $heure_debut;
-	$this->heure_fin		= $heure_fin;
-
-
-// 	$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
-// 	$this->id			= $requete;
-      }
-    else
-      {		
-	$infos = $pdo->query('SELECT * FROM `animateurs` WHERE id = '.intval($animateurId))->fetch(PDO::FETCH_OBJ);
-		
-	if($infos === false) return false;
-		
-	$this->id			= $infos->id;
-	$this->name			= $infos->name;
-	$this->password		= $infos->password;
-	$this->compte		= $compte;
-		
-	return true;
-      }
-  }
-  public static function getCreneaux(Member $compte)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $query = 'SELECT * FROM `animateurs_creneaux`';
-    $anim = array();
-
-    $i = 0;
-    foreach ($pdo->query($query) as $result)
-      {
-	$anim[$i] = array('id'		=> $result['id'],
-			  'id_anim'	=> $result['id_anim'],
-			  'jour'	=> $result['jour'],
-			  'heure_debut'	=> $result['heure_debut'],
-			  'heure_fin'	=> $result['heure_fin']);
-	$i++;
-      }
-    $anim[$i] = NULL;
-    return ($anim);    
-  }
-
-  public static function deleteCreneaux(Member $compte, $id)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $query = 'SELECT `id` FROM `animateurs_creneaux` WHERE id = "'.$id.'"';
-    $res = $pdo->query($query);
-
-    if ($res->fetchColumn() > 0)
-      {
-	$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id`= '.$id.'');
-	return (1);
-      }
-    else
-      return (0);
-  }
-
-  public static function getAnim(Member $compte, $id)
-  {
-    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-    $query = 'SELECT `name` FROM `animateurs` WHERE id = "'.$id.'"';
-    $res = $pdo->query($query);
-
-    return ($res);
-  }
-
-  public static function getDate($id)
-  {
-    $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
-
-    return ($jour[$id]);
-  }
-
-
-  public function save ()
-  {
-    @$pdo = UserDS::getInstance($this->compte->login."_".$this->compte->getStream()->id);
-		
-    $requete = $pdo->prepare("UPDATE animateurs_creneaux SET
-						jour = :jour,
-						heure_debut = :heure_debut,
-						heure_fin = :heure_fin
-					WHERE id = :id");
-
-    $requete->bindValue(':jour', 		$this->jour);
-    $requete->bindValue(':heure_debut',		$this->heure_debut);
-    $requete->bindValue(':heure_fin',		$this->heure_fin);
-    $requete->bindValue(':id',			$this->id);
-    $requete->execute();
-  }
-}
-
 ?>
