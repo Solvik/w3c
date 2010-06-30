@@ -22,5 +22,5 @@ elseif (isset($_POST['add_creneaux']))
 			   "2",
 			   $heure_debut,
 			   $heure_fin,
-			   htmlspecialchars($_POST['jour']),);
+			   htmlspecialchars($_POST['jour']));
 }
