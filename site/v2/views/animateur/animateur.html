@@ -45,18 +45,13 @@ foreach ($animateurs as $animateur)
 	<tr>
 		<td>Animateur :</td>
 		<td>
+			<select name="animateur">
 <?php
-
-echo '<select name="animateur">';
-
-for ($i = 0; $animateurs[$i]; $i++)
+foreach ($animateurs as $animateur)
 {
-   echo '<option value="wich_anim">'
-   .$animateurs[$i]['name'].
-   '</option>';
+   echo '<option value="which_anim">' . $animateur['name'] . '</option>';
 }
-echo '</select>';
-?>
+?>			</select>
 		</td>
 	</tr>
 	<tr>
@@ -65,7 +60,7 @@ echo '</select>';
 		  <select name="jour">
 		    <?php 
 		       $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
-		    for ($i = 0; $i <= 7; $i++) echo '<option value="'.$i.'">'.$jour[$i].'</option>';
+		    for ($i = 1; $i <= 7; $i++) echo '<option value="'.$i.'">'.$jour[$i].'</option>';
 				       ?>
 		      </select>
 		</td>
@@ -73,15 +68,15 @@ echo '</select>';
 	<tr>
 		<td>Heure de d&eacute;but :</td>
 		<td>
-			<select name="hdebut"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
-			<select name="mdebut"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+			<select name="hdebut"><?php for($i = 0; $i <= 23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mdebut"><?php for($i = 0; $i <= 59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
 		</td>
 	</tr>
 	<tr>
 		<td>Heure de fin :</td>
 		<td>
-			<select name="hfin"><?php for($i = 0; $i <=23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
-			<select name="mfin"><?php for($i = 0; $i <=59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
+			<select name="hfin"><?php for($i = 0; $i <= 23; $i++) echo '<option value="'.$i.'">'.$i.' h</option>'; ?></select> :
+			<select name="mfin"><?php for($i = 0; $i <= 59; $i++) echo '<option value="'.$i.'">'.$i.' mn</option>'; ?></select>
 		</td>
 	</tr>
 	<tr>

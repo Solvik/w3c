@@ -8,14 +8,15 @@ $stream = $compte->getStream();
 
 $id = intval($_GET['id']);
 if ($_GET['type'] == "animateur")
-  {
-    $ret = Animateur::deleteAnim($compte, $id);
-
-    if ($ret == 1)
-      include VIEW.'suppression-animateur-ok.html';
+{
+    $result1 = Animateur::deleteAnim($compte, $id);
+	$result2 = Creneaux::deleteAnimateurCreneaux($compte, $id);
+	
+    if ($result1 AND $result2)
+		header('Location: animateur');
     else
-      include VIEW.'suppression-animateur-fail.html';
-  }
+		include VIEW.'suppression-animateur-fail.html';
+}
 else
-  Creneaux::deleteCreneaux($compte, $id);
+	Creneaux::deleteCreneaux($compte, $id);
        

@@ -81,9 +81,9 @@ class Animateur
 		{
 			$pdo->query('DELETE FROM `animateurs` WHERE `id` = '.$id.'');
 			$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id_anim`= '.$id.'');
-			return 1;
+			return true;
 		} else
-			return 0;
+			return false;
 	}
   /**
    * @desc Méthode chargée de retourner la valeur de l'attribut en paramètre.
