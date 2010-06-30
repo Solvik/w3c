@@ -18,9 +18,9 @@ elseif (isset($_POST['add_creneaux']))
 
   Creneaux::addCreneau(		$compte,
 							intval($_POST['animateur']),
+							intval($_POST['jour']),
 							$heure_debut,
-							$heure_fin,
-							htmlspecialchars($_POST['jour'])
+							$heure_fin
 					   );
 			   
 	header('Location: animateur');
