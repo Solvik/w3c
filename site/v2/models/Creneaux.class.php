@@ -83,7 +83,7 @@ class Creneaux
 	
 	public static function getDate($id)
 	{
-		$jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
+		$jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche", 8 => "Tous les jours");
 
 		return $jour[$id];
 	}

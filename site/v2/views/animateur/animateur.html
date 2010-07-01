@@ -1,4 +1,4 @@
-<div class="boxtitle">Mes Animateurs</div>
+﻿<div class="boxtitle">Mes Animateurs</div>
 <div class="content_content">
 
 <p><u>Cr&eacute;er un animateur</u></p>
@@ -56,7 +56,8 @@ foreach ($animateurs as $animateur)
 {
    echo '<option value="' . $animateur['id'] . '">' . $animateur['name'] . '</option>';
 }
-?>			</select>
+?>
+			</select>
 		</td>
 	</tr>
 	<tr>
@@ -64,8 +65,8 @@ foreach ($animateurs as $animateur)
 		<td>
 		  <select name="jour">
 		    <?php 
-		       $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche");
-		    for ($i = 1; $i <= 7; $i++) echo '<option value="'.$i.'">'.$jour[$i].'</option>';
+		       $jour = array(1 => "Lundi", 2 => "Mardi", 3 => "Mercredi", 4 => "Jeudi", 5 => "Vendredi", 6 => "Samedi", 7 => "Dimanche", 8 => "Tous les jours (*)");
+		    for ($i = 1; $i <= 8; $i++) echo '<option value="'.$i.'">'.$jour[$i].'</option>';
 				       ?>
 		      </select>
 		</td>
@@ -88,6 +89,9 @@ foreach ($animateurs as $animateur)
 		<td></td>
 		<td><input type="submit" name="add_creneaux" value="Ajouter" /></td>
 	</tr>
+	<tr>
+		<td><em>(*) Dans le cas de "Tous les jours" il n'est pas nécessaire de remplir les heures de début et de fin, l'accès au live sera autorisé 24h/24.</em></td>
+		<td></td>
 </table>
 
 <p><u>Liste des creneaux</u></p>
