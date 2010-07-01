@@ -7,7 +7,7 @@ include MODEL.'Animateur.php';
 
 if (isset($_POST['add_animateur']))
 {
-	$animateur = new Animateur($compte, Animateur::NOUVEAU, htmlspecialchars($_POST['animateur']), htmlspecialchars($_POST['password']));
+  $animateur = new Animateur($compte, Animateur::NOUVEAU, htmlspecialchars($_POST['animateur']), htmlspecialchars($_POST['password']), htmlspecialchars($_POST['mail']));
 	header('Location: animateur');
 }
 elseif (isset($_POST['add_creneaux']))

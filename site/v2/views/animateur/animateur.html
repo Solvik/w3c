@@ -9,6 +9,8 @@
     <td><input type="text" name="animateur" /></td>
     <td>Mot de passe:</td>
     <td><input type="text" name="password" /></td>
+    <td>Email:</td>
+    <td><input type="text" name="mail" /></td>
     <td><input class="submit" type="submit" name="add_animateur" value="Ajouter" /></td>
   </tr>
 </table>
@@ -18,9 +20,10 @@
 
 <table style="width:100%;">
 	<tr>
-	  <th>ID</th>
+		<th>ID</th>
 		<th>Nom</th>
 		<th>Mot de Passe</th>
+		<th>Email</th>
 		<th>Actions</th>
 	</tr>
 <?php
@@ -30,9 +33,10 @@ $animateurs = Animateur::getAnimateurs($compte);
 foreach ($animateurs as $animateur)
 {
    
-   echo '<tr<td style="width:25%;">'.$animateur['id'].'</td>';
-   echo '<td style="width:25%;">'.$animateur['name'].'</td>';
+   echo '<tr<td style="width:10%;">'.$animateur['id'].'</td>';
+   echo '<td style="width:20%;">'.$animateur['name'].'</td>';
    echo '<td style="width:25%;">'.$animateur['password'].'</td>';
+   echo '<td style="width:25%;">'.$animateur['mail'].'</td>';
    echo '<td style="width:25%;"><a href="animateur-edit-'.$animateur['id'].'"><img src="images/edit.png" alt="" /> Editer</a> &nbsp;|&nbsp;
    <a href="animateur-del-'.$animateur['id'].'"><img src="images/del.png" alt="" /> Supprimer</a></td></tr>';
 }

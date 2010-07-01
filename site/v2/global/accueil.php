@@ -11,7 +11,7 @@
 				<li>Graphiques</li>
 				<li>Minisite &eacute;ditable</li>
 			</ul>
-			<p style="text-align:center;"><big>14,99 &euro; / mois</big></p>
+			<p style="text-align:center;"><img src="images/icons/new.png" alt="new"> <big>9,99 &euro; / mois</big></p>
  <div align="center"><a href="offres" class="button"><span class="add">Acheter</span></a></div>
             </div>                  
         </div>
@@ -27,7 +27,7 @@
 				<li>Graphiques</li>
 				<li>Minisite &eacute;ditable</li>
 			</ul>
-			<p style="text-align:center;"><big>29,99 &euro; / mois</big></p>
+			<p style="text-align:center;"><img src="images/icons/new.png" alt="new"> <big>14,99 &euro; / mois</big></p>
  <div align="center"><a href="offres" class="button"><span class="add">Acheter</span></a></div>     
             </div>                  
         </div>
@@ -43,7 +43,7 @@
 				<li>Graphiques</li>
 				<li>Minisite &eacute;ditable</li>
 			</ul>
-			<p style="text-align:center;"><big>49,99 &euro; / mois</big></p>
+			<p style="text-align:center;"><img src="images/icons/new.png" alt="new"> <big>29,99 &euro; / mois</big></p>
  <div align="center"><a href="offres" class="button"><span class="add">Acheter</span></a></div>
             </div>                  
         </div>
@@ -55,11 +55,11 @@
     <div class="left_content">
     <div class="title">Bienvenue sur <strong>Oxycast</strong></div>
 	<p>
-Oxycast est un service cr&eacute;&eacute; par l'association <a href="http://www.oxyradio.net" alt="webradio">OxyRadio</a>. Il a pour but de permettre &agrave; n'importe qui de pouvoir cr&eacute;er en toute facilit&eacute; un syst&egrave;me de webradio performant et b&eacute;n&eacute;ficiant de fonctionnalit&eacute;s bien souvent trop rares sur le march&eacute;. Le service &eacute;tant payant, la totalit&eacute; des sommes per&ccedil;ues par OxyCast sera redistibu&eacute;e &agrave; l'association pour son fonctionnement.
+Oxycast est un service cr&eacute;&eacute; par l'association <a href="http://www.oxyradio.net" alt="webradio">OxyRadio</a>. Il a pour but de permettre &agrave; n'importe qui de pouvoir cr&eacute;er en toute facilit&eacute; un syst&egrave;me de webradio performant et b&eacute;n&eacute;ficiant de fonctionnalit&eacute;s bien souvent trop rares sur le march&eacute;. Le service &eacute;tant payant, la totalit&eacute; des sommes per&ccedil;ues par OxyCast sera redistribu&eacute;e &agrave; l'association pour son fonctionnement.
     </p>    
 
 	<p class="left_arrow">
-Nous proposons en effet un syst&egrave;me de playlist avec lequel vous pourrez g&eacute;rer la programmation de votre flux. Un syst&egrave;me de live est &eacute;galement disponible permettant de prendre le relais sans coupure. Vous pouvez choisir le nombre de chansons au bout desquelles vous souhaitez entendre vos jingles..
+Nous proposons en effet un syst&egrave;me de playlist avec lequel vous pourrez g&eacute;rer la programmation de votre flux. Un syst&egrave;me de live est &eacute;galement disponible permettant de prendre le relais sans coupure. Vous pouvez retrouver l'ensemble des fonctionnalit&eacute;s uniques que <a href="apropos">nous proposons ici</a>.
     </p> 
 
 	<p class="left_arrow">
@@ -73,6 +73,13 @@ Nos infrastructures techniques nous permettent de proposer &agrave; nos clients 
     <div class="title">News</div>
  
 
+	<div class="right_news">
+    	<div class="news_icon"></div>
+        <div class="news_content">
+Vous &ecirc;tes de plus en plus nombreux &agrave; nous faire confiance et c'est pour cela que nous proc&eacute;dons &agrave une baisse significative des prix.<br />
+D&eacute;sormais, le pack S est &agrave; 9,99&euro;, le pack L &agrave; 14,99&euro; et le pack XL &agrave; 29,99&euro;. <a href="offres" target="_blank">Retrouvez les offre</a>. 
+	</div>
+</div>
 	<div class="right_news">
     	<div class="news_icon"></div>
         <div class="news_content">

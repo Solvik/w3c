@@ -13,77 +13,82 @@ class Animateur
   protected $id;
   protected $name;
   protected $password;
+  protected $mail;
   protected $compte;
 	
   const NOUVEAU = -1;
 
-	/**
-	 * @desc Contructeur
-	 * @return bool
-	 */
-	public function __construct (Member $compte, $animateurId, $name = null, $password = null)
-	{
-		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-		$this->compte = $compte;
+  /**
+   * @desc Contructeur
+   * @return bool
+   */
+  public function __construct (Member $compte, $animateurId, $name = null, $password = null, $mail = null)
+  {
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $this->compte = $compte;
 
-		if ($animateurId == self::NOUVEAU)
-		{
-			$requete = $pdo->prepare("INSERT INTO animateurs SET name = :name, password = :password");
-			$requete->bindValue(':name', $name);
-			$requete->bindValue(':password', $password);
-			$requete->execute();
+    if ($animateurId == self::NOUVEAU)
+      {
+	$requete = $pdo->prepare("INSERT INTO animateurs SET name = :name, password = :password, mail = :mail");
+	$requete->bindValue(':name', $name);
+	$requete->bindValue(':password', $password);
+	$requete->bindValue(':mail', $mail);
+	$requete->execute();
 
-			$this->name		= $name;
-			$this->password	= $password;
+	$this->name		= $name;
+	$this->password		= $password;
+	$this->mail		= $mail;
 
-			$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
-			$this->id = $requete;
-		}
-		else
-		{		
-			$infos = $pdo->query('SELECT * FROM `animateurs` WHERE id = '.intval($animateurId))->fetch(PDO::FETCH_OBJ);
+	$requete = $pdo->query('SELECT id FROM animateurs WHERE name = \''. $name .'\'')->fetchColumn();
+	$this->id = $requete;
+      }
+    else
+      {		
+	$infos = $pdo->query('SELECT * FROM `animateurs` WHERE id = '.intval($animateurId))->fetch(PDO::FETCH_OBJ);
 				
-			if($infos === false) return false;
+	if($infos === false) return false;
 				
-			$this->id			= $infos->id;
-			$this->name			= $infos->name;
-			$this->password		= $infos->password;
-			$this->compte		= $compte;
+	$this->id			= $infos->id;
+	$this->name			= $infos->name;
+	$this->password		= $infos->password;
+	$this->mail		= $infos->mail;
+	$this->compte		= $compte;
 				
-			return true;
-		}
-	}
+	return true;
+      }
+  }
 
-	public static function getAnimateurs(Member $compte)
-	{
-		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-		$query = 'SELECT * FROM `animateurs`';
-		$anim = array();
+  public static function getAnimateurs(Member $compte)
+  {
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT * FROM `animateurs`';
+    $anim = array();
 
-		foreach ($pdo->query($query) as $result)
-		{
-			array_push($anim, array('id'		=> $result['id'],
-									'name'		=> utf8_encode($result['name']),
-									'password'	=> $result['password'])
-					  );
-		}
-		return $anim;
-	}
+    foreach ($pdo->query($query) as $result)
+      {
+	array_push($anim, array('id'		=> $result['id'],
+				'name'		=> utf8_encode($result['name']),
+				'password'	=> $result['password'],
+				'mail'		=> utf8_encode($result['mail']))
+		   );
+      }
+    return $anim;
+  }
 
-	public static function deleteAnim(Member $compte, $id)
-	{
-		@$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
-		$query = 'SELECT `id` FROM `animateurs` WHERE id = "'.$id.'"';
-		$res = $pdo->query($query);
+  public static function deleteAnim(Member $compte, $id)
+  {
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT `id` FROM `animateurs` WHERE id = "'.$id.'"';
+    $res = $pdo->query($query);
 
-		if ($res->fetchColumn() > 0)
-		{
-			$pdo->query('DELETE FROM `animateurs` WHERE `id` = '.$id.'');
-			$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id_anim`= '.$id.'');
-			return true;
-		} else
-			return false;
-	}
+    if ($res->fetchColumn() > 0)
+      {
+	$pdo->query('DELETE FROM `animateurs` WHERE `id` = '.$id.'');
+	$pdo->query('DELETE FROM `animateurs_creneaux` WHERE `id_anim`= '.$id.'');
+	return true;
+      } else
+      return false;
+  }
   /**
    * @desc Méthode chargée de retourner la valeur de l'attribut en paramètre.
    * @param $attribut string Le nom de l'attribut.
@@ -118,11 +123,13 @@ class Animateur
 		
     $requete = $pdo->prepare("UPDATE animateurs SET
 						name = :name,
-						password = :password
+						password = :password,
+						mail = :mail 
 					WHERE id = :id");
 
     $requete->bindValue(':name', 		$this->name);
     $requete->bindValue(':password',		$this->password);
+    $requete->bindValue(':mail',		$this->mail);
     $requete->bindValue(':id',			$this->id);
     $requete->execute();
   }

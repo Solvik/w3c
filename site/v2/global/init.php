@@ -129,13 +129,3 @@ function getJour ($jour)
 	$jours = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
 	return $jours[$jour-1];
 }
-
-function nb_with_zero($nb)
-{
-  if ($nb < 10)
-    {
-      $toto = "0".$nb;
-      return ($toto);
-    }
-  return ($nb);
-}

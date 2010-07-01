@@ -17,6 +17,7 @@ if (isset($_POST['edit']))
 		{
 			$animateur->name = htmlspecialchars($_POST['animateur']);
 			$animateur->password = htmlspecialchars($_POST['password']);
+			$animateur->mail = htmlspecialchars($_POST['mail']);
 			$animateur->save();
 
 			header('Location: animateur');
@@ -29,5 +30,5 @@ else
 {
     $animateur = new Animateur($compte, $id);
     if ($animateur)
-		include VIEW.'edit-animateur.html';
+      include VIEW.'edit-animateur.html';
 }

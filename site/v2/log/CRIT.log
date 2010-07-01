@@ -60,3 +60,17 @@ USER - 26/09/2009 - 15:43:22 : Unknown column 'pass' in 'where clause'
 #2  Creneaux->__construct(Member Object ([] => 24,[] => Solvik,[] => MDFhYmRmYjQ2YjQxNDhkMzAxM2E2N2Y0YTM2YzI1YTUyMDM1NjU4YQ==,[] => BLUM,[] => Solvik,[] => solvik@oxycast.net,[] => 9b les plants orange,[] => *****,[] => Cergy,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => solvik), -1, 2, 04:0000, 10:0000, 3, ) called at [/home/oxycast/w3c/site/v2/controllers/animateur/add.php:26]
 #3  include(/home/oxycast/w3c/site/v2/controllers/animateur/add.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
 
+ - 30/06/2010 - 21:25:32 : Table 'alfo_6.animateurs' doesn't exist
+#0  UserDS->__call(query, Array ([0] => SELECT * FROM `animateurs`))
+#1  UserDS->query(SELECT * FROM `animateurs`) called at [/home/oxycast/w3c/site/v2/models/Animateur.php:65]
+#2  Animateur::getAnimateurs(Member Object ([] => 25,[] => alfo,[] => ZmNjY2RmMTVjMThiZWRlNzJmOGQzNTBjMDE2NzRiNTdmNDM5OTBmNw==,[] => ,[] => ,[] => alfo.agonia@gmail.com,[] => ,[] => ,[] => ,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => )) called at [/home/oxycast/w3c/site/v2/views/animateur/animateur.html:29]
+#3  include(/home/oxycast/w3c/site/v2/views/animateur/animateur.html) called at [/home/oxycast/w3c/site/v2/controllers/animateur/index.php:13]
+#4  include(/home/oxycast/w3c/site/v2/controllers/animateur/index.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+
+ - 30/06/2010 - 21:26:26 : Table 'alfo_6.animateurs' doesn't exist
+#0  UserDS->__call(query, Array ([0] => SELECT * FROM `animateurs`))
+#1  UserDS->query(SELECT * FROM `animateurs`) called at [/home/oxycast/w3c/site/v2/models/Animateur.php:65]
+#2  Animateur::getAnimateurs(Member Object ([] => 25,[] => alfo,[] => ZmNjY2RmMTVjMThiZWRlNzJmOGQzNTBjMDE2NzRiNTdmNDM5OTBmNw==,[] => ,[] => ,[] => alfo.agonia@gmail.com,[] => ,[] => ,[] => ,[] => ,[] => 0000-00-00 00:00:00,[] => 0000-00-00 00:00:00,[] => 1,[] => ,[] => ,[] => )) called at [/home/oxycast/w3c/site/v2/views/animateur/animateur.html:29]
+#3  include(/home/oxycast/w3c/site/v2/views/animateur/animateur.html) called at [/home/oxycast/w3c/site/v2/controllers/animateur/index.php:13]
+#4  include(/home/oxycast/w3c/site/v2/controllers/animateur/index.php) called at [/home/oxycast/w3c/site/v2/index.php:29]
+
