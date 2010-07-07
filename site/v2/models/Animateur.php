@@ -89,6 +89,19 @@ class Animateur
       } else
       return false;
   }
+
+  public static function animExiste(Member $compte, $animateur, $password)
+  {
+    @$pdo = UserDS::getInstance($compte->login."_".$compte->getStream()->id);
+    $query = 'SELECT `id` FROM `animateurs` WHERE name = "'.$animateur.'" AND password = "'.$password.'"';
+    $res = $pdo->query($query);
+
+    if ($res->fetchColumn() > 0)
+      return true;
+    else
+      return false;
+  }
+
   /**
    * @desc Méthode chargée de retourner la valeur de l'attribut en paramètre.
    * @param $attribut string Le nom de l'attribut.

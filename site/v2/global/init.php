@@ -80,15 +80,17 @@ if (!function_exists('checkdnsrr')) {
 // Vérifie une addresse email
 function validation_email($email)
 {
-	$exp = "^[a-z\'0-9]+([._-][a-z\'0-9]+)*@([a-z0-9]+([._-][a-z0-9]+))+$";
+  $exp = "^[a-z\'0-9]+([._-][a-z\'0-9]+)*@([a-z0-9]+([._-][a-z0-9]+))+$";
 
-	if(eregi($exp,$email)){
-		if(checkdnsrr(array_pop(explode("@",$email)),"MX")){
-			return true;
-		} else {
-			return false;
-		}
-	} else return false;
+  if(eregi($exp,$email))
+    {
+      if(checkdnsrr(array_pop(explode("@",$email)),"MX"))
+	return true;
+      else
+	return false;
+    }
+  else
+    return false;
 }
 
 // Vérifie si l'IP est blacklistée
