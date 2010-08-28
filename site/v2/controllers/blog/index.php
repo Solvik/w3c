@@ -11,7 +11,7 @@ else {
 	{
 		if(!empty($_POST['nom']))
 		{
-			if(preg_match("^[a-zA-Z0-9_-]+$^",$_POST['nom']))
+			if(preg_match("^[\w\_\-]+$^",$_POST['nom']) AND str_replace(' ','',$_POST['nom']) == $_POST['nom']) //TODO: Pas joli, mais fonctionnel
 			{
 				$blogName = $_POST['nom'];
 				if(!Members::getCountByCond('blog = \''.$blogName.'\''))
