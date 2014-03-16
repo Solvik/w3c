@@ -1,21 +1,8 @@
-A PROPOS:
+W3C
+=====================
 
-Infos pour la base:
 
-streams:
- -> status:
-	- programme: la moulinette doit lactiver
-	- en cours: le stream est en cours, RAS
-	- termine: le stream est termine, la moulinette doit le delete
-	- suspendu: le stream est suspendu, la moulinette doit le kill
-	- renew: le stream est renouvele, la moulinette doit rajouter 1 mois a la bdd
+Former website developped to provide automatic radio streams to people who wanted to create a webradio.
+It uses the audio and streaming language <a href="https://github.com/savonet/liquidsoap">Liquidsoap</a>.
 
-TODO:
-- systeme qui parse tous les streams pour verifier qu'il depasse pas le nb d'audi max
-- systeme d'achat de streams
-- ajouter une option pr utiliser le catalogue musical d'oxyradio
-- grille des programmes
->> rajouter le moyen de faire durer la playlist le temps qu'on veut (1h, 2H, 4h30 etc)
-- ministe
-
-test commit
+Code is a bit old and has been written without advanced experience of programming.
